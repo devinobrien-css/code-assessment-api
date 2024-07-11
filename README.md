@@ -67,6 +67,12 @@ Model (type defining)
 Controller (routing(req/res) & auth)
 Service (Handling)
 
+### Adding a Package
+
+```bash
+dotnet add package PACKAGE_NAME
+```
+
 ### Creating a Model
 
 Add a `[MODEL_NAME].cs`  file to `/Model` holding object/type data:
@@ -116,3 +122,16 @@ dotnet ef migrations add NewMigrationTitle
 &nbsp;
 
 ### Creating a Seed Script
+
+SEED SCRIPT INFO
+
+&nbsp;
+
+## Documentation
+
+[Download Docker](https://www.docker.com/products/docker-desktop/)
+[Download .NET 8+](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+[.NET 8+ Web API](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-8.0&tabs=visual-studio-code)
+[.NET Migrations](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli)
+[.NET Identity](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0)
+[Prevent Over Posting](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0)

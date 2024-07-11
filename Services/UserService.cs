@@ -1,23 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using code_assessment_api.Models;
-using code_assessment_api.Services;
+using code_assessment_api.Contexts;
 
 namespace code_assessment_api.Services
 {
     public class UserService : IUserService
     {
-        public UserService(UserContext context)
+        public UserService(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        private readonly UserContext _context;
+        private readonly ApplicationDbContext _context;
 
         public async Task<IEnumerable<User>> GetUsersAsync()
         {
@@ -61,22 +55,13 @@ namespace code_assessment_api.Services
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-
-            return;
         }
         
-        // public async bool DeleteUserAsync(User user)
-        // {
-        //     _context.Users.Remove(user);
-        //     await _context.SaveChangesAsync();
-
-        //     return true;
-        // }
-
-        // public async bool UserExists(long id)
-        // {
-        //     return await _context.Users.AnyAsync(e => e.Id == id);
-        // }
+        public async Task DeleteUserAsync(User user)
+        {
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+        }
     }
 
 }

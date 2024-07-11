@@ -1,23 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using code_assessment_api.Models;
 using code_assessment_api.Services;
+using Microsoft.AspNetCore.Authorization;
+using code_assessment_api.Contexts;
 
 namespace code_assessment_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController(UserContext context) : ControllerBase
+    public class UserController(ApplicationDbContext context) : ControllerBase
     {
         private readonly UserService _userService = new(context);
 
         // GET: api/User
         [HttpGet]
+        [Authorize]
         public async Task<IEnumerable<User>> GetUsers()
         {
             return await _userService.GetUsersAsync();
@@ -77,20 +74,20 @@ namespace code_assessment_api.Controllers
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // // DELETE: api/User/5
-        // [HttpDelete("{id}")]
-        // public async Task<IActionResult> DeleteUser(long id)
-        // {
-        //     var user = await _context.Users.FindAsync(id);
-        //     if (user == null)
-        //     {
-        //         return NotFound();
-        //     }
+        // DELETE: api/User/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(long id)
+        {
+            var user = await _userService.GetUserAsync(id);
 
-        //     _context.Users.Remove(user);
-        //     await _context.SaveChangesAsync();
+            if(user == null)
+            {
+                return NotFound();
+            }
 
-        //     return NoContent();
-        // }
+            await _userService.DeleteUserAsync(user);
+
+            return NoContent();
+        }
     }
 }

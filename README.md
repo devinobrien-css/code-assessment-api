@@ -47,7 +47,9 @@
 
 ## Getting Started / Running the app
 
+```bash
 dotnet run --launch-profile https
+```
 
 &nbsp;
 
@@ -58,6 +60,12 @@ localhost:5044/swagger
 &nbsp;
 
 ## Contributing
+
+### Logical Breakdown of Concepts
+
+Model (type defining)
+Controller (routing(req/res) & auth)
+Service (Handling)
 
 ### Creating a Model
 

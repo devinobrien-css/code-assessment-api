@@ -1,13 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Models;
+namespace code_assessment_api.Models;
 
 public class UserContext : DbContext
 {
     public UserContext(DbContextOptions<UserContext> options)
         : base(options)
-    {
-    }
+    {}
 
     public DbSet<User> Users { get; set; } = null!;
 }

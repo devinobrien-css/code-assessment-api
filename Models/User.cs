@@ -1,4 +1,4 @@
-namespace Models;
+namespace code_assessment_api.Models;
 
 public class User
 {

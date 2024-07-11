@@ -5,33 +5,34 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Models;
+using code_assessment_api.Models;
+using code_assessment_api.Services;
 
 namespace code_assessment_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController(UserContext context) : ControllerBase
     {
-        private readonly UserContext _context;
-
-        public UserController(UserContext context)
-        {
-            _context = context;
-        }
+        private readonly UserService _userService = new(context);
 
         // GET: api/User
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<IEnumerable<User>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _userService.GetUsersAsync();
         }
 
         // GET: api/User/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(long id)
         {
-            var user = await _context.Users.FindAsync(id);
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+
+            var user = await _userService.GetUserAsync(id);
 
             if (user == null)
             {
@@ -51,22 +52,16 @@ namespace code_assessment_api.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(user).State = EntityState.Modified;
-
-            try
+            if(!_userService.UserExists(id))
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+
+            var updatedUser = await _userService.UpdateUserAsync(user);
+
+            if (updatedUser == null)
             {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(500, "Failed to update user");
             }
 
             return NoContent();
@@ -77,31 +72,25 @@ namespace code_assessment_api.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            await _userService.AddUserAsync(user);
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // DELETE: api/User/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(long id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+        // // DELETE: api/User/5
+        // [HttpDelete("{id}")]
+        // public async Task<IActionResult> DeleteUser(long id)
+        // {
+        //     var user = await _context.Users.FindAsync(id);
+        //     if (user == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+        //     _context.Users.Remove(user);
+        //     await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
-
-        private bool UserExists(long id)
-        {
-            return _context.Users.Any(e => e.Id == id);
-        }
+        //     return NoContent();
+        // }
     }
 }

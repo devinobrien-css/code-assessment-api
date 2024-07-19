@@ -1,15 +1,20 @@
 using code_assessment_api.Models;
-using code_assessment_api.Services;
+using code_assessment_api.ViewModels.Requests;
 
 namespace code_assessment_api.Services {
     public interface IUserService
     {
         Task<IEnumerable<User>> GetUsersAsync();
-        Task<User?> GetUserAsync(long id);
-        Task<User?> UpdateUserAsync(User user);
+        Task<User?> GetUserAsync(string id);
+        Task UpdateUserAsync(string userId, UpdateUserRequest newData);
         Task AddUserAsync(User user);
         Task DeleteUserAsync(User user);
-        bool UserExists(long id);
+        bool UserExists(string id);
+        public Task<IEnumerable<ProfileAvatar>> GetProfileAvatarsAsync();
+        public Task SetProfileAvatarsAsync(int avatarId, string userId);
+        public Task UserFavoritesBookAsync(int bookId, string userId);
+        public Task UserUnfavoritesBookAsync(int bookId, string userId);
+        public  Task<IEnumerable<Book>> GetUserFavoriteBooksAsync(string userId);
     }
 
 }

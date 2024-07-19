@@ -267,3 +267,6 @@
 /Users/devinpobrien/Code/code-assessment-api/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
 /Users/devinpobrien/Code/code-assessment-api/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/devinpobrien/Code/code-assessment-api/bin/Debug/net8.0/code-assessment-api.staticwebassets.runtime.json
+/Users/devinpobrien/Code/code-assessment-api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/devinpobrien/Code/code-assessment-api/bin/Debug/net8.0/test_data.json
+/Users/devinpobrien/Code/code-assessment-api/bin/Debug/net8.0/Bogus.dll

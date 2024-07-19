@@ -2,19 +2,24 @@ using Microsoft.AspNetCore.Mvc;
 using code_assessment_api.Models;
 using code_assessment_api.Services;
 using Microsoft.AspNetCore.Authorization;
-using code_assessment_api.Contexts;
+using code_assessment_api.Data;
+using Microsoft.AspNetCore.Identity;
+using NuGet.Protocol;
+using code_assessment_api.ViewModels.Requests;
 
 namespace code_assessment_api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class UserController(ApplicationDbContext context) : ControllerBase
+    [Authorize]
+    [Route("api/[controller]")]
+    public class UserController(ApplicationDbContext context, UserManager<User> userManager) : ControllerBase
     {
-        private readonly UserService _userService = new(context);
+        private readonly UserManager<User> _identityManager = userManager;
+        private readonly UserService _userService = new(context, userManager);
+        private readonly BookService _bookService = new(context);
 
         // GET: api/User
         [HttpGet]
-        [Authorize]
         public async Task<IEnumerable<User>> GetUsers()
         {
             return await _userService.GetUsersAsync();
@@ -22,9 +27,9 @@ namespace code_assessment_api.Controllers
 
         // GET: api/User/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(long id)
+        public async Task<ActionResult<User>> GetUser(string id)
         {
-            if (id <= 0)
+            if (id == null)
             {
                 return BadRequest();
             }
@@ -39,12 +44,22 @@ namespace code_assessment_api.Controllers
             return user;
         }
 
-        // PUT: api/User/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(long id, User user)
+        // PATCH: api/User/5
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchUser(string id, UpdateUserRequest user)
         {
-            if (id != user.Id)
+            Console.WriteLine("--------------------");
+            Console.WriteLine("PATCH USER");
+
+            Console.WriteLine("ID: " + id);
+            Console.WriteLine("USER: " + user.ToJson());
+
+            var identityUser = await _identityManager.GetUserAsync(User);
+            if(identityUser == null)
+            {
+                return NotFound("User not found");
+            }
+            if (id != identityUser.Id)
             {
                 return BadRequest();
             }
@@ -54,18 +69,12 @@ namespace code_assessment_api.Controllers
                 return NotFound();
             }
 
-            var updatedUser = await _userService.UpdateUserAsync(user);
-
-            if (updatedUser == null)
-            {
-                return StatusCode(500, "Failed to update user");
-            }
+            await _userService.UpdateUserAsync(id, user);
 
             return NoContent();
         }
 
         // POST: api/User
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
@@ -74,9 +83,93 @@ namespace code_assessment_api.Controllers
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
+        // GET: api/User/avatars
+        [HttpGet("avatars")]
+        public async Task<IEnumerable<ProfileAvatar>> GetProfileAvatars()
+        {
+            return await _userService.GetProfileAvatarsAsync();
+        }
+
+        // POST: api/User/5/avatar/2
+        [HttpPost("{userId}/avatar/{avatarId}")]
+        public async Task<ActionResult> SetProfileAvatar(string userId, int avatarId)
+        {
+            var identityUser = await _identityManager.GetUserAsync(User);
+            if (identityUser == null)
+            {
+                return NotFound("User not found");
+            }
+            else if (identityUser.Id != userId)
+            {
+                return Unauthorized();
+            }
+
+            await _userService.SetProfileAvatarsAsync(avatarId, userId);
+            return NoContent();
+        }
+
+        // GET: api/User/5/favorite
+        [HttpGet("{userId}/favorite")]
+        public async Task<IEnumerable<Book>> GetUserFavoriteBooks(string userId)
+        {
+            return await _userService.GetUserFavoriteBooksAsync(userId);
+        }
+
+        // POST: api/User/5/favorite/2
+        [HttpPost("{userId}/favorite/{bookId}")]
+        public async Task<ActionResult> UserFavoritesBook(string userId, int bookId)
+        {
+            var identityUser = await _identityManager.GetUserAsync(User);
+            if (identityUser == null)
+            {
+                return NotFound("User not found");
+            }
+            else if (identityUser.Id != userId)
+            {
+                return Unauthorized();
+            }
+
+
+            var book = await _bookService.GetBookAsync(bookId);
+            if(book == null)
+            {
+                return NotFound("Book not found");
+            }
+
+            await _userService.UserFavoritesBookAsync(bookId, userId);
+
+            return NoContent();
+        }
+
+        // DELETE: api/User/5/favorite/2
+        [HttpDelete("{userId}/favorite/{bookId}")]
+        public async Task<ActionResult> UserUnfavoritesBook(string userId, int bookId)
+        {
+            var identityUser = await _identityManager.GetUserAsync(User);
+            if (identityUser == null)
+            {
+                return NotFound("User not found");
+            }
+            else if (identityUser.Id != userId)
+            {
+                return Unauthorized();
+            }
+
+            var book = await _bookService.GetBookAsync(bookId);
+            if(book == null)
+            {
+                return NotFound("Book not found");
+            }
+
+            await _userService.UserUnfavoritesBookAsync(bookId, userId);
+
+            return NoContent();
+        }
+
         // DELETE: api/User/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(long id)
+        [Authorize(Roles = "Employee")]
+        public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _userService.GetUserAsync(id);
 

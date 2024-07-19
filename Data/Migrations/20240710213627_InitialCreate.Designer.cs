@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using code_assessment_api.Contexts;
+using code_assessment_api.Data;
 
 #nullable disable
 

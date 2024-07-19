@@ -1,8 +1,17 @@
+using code_assessment_api.Services;
+using Microsoft.AspNetCore.Identity;
+
 namespace code_assessment_api.Models;
 
-public class User
+public class User : IdentityUser
 {
-    public long Id { get; set; }
-    public string? OwnerID { get; set; }
-    public string? Name { get; set; }
+    public string First { get; set; } = string.Empty;
+    public string Last { get; set; } = string.Empty;
+    public int? ProfileAvatarId { get; set; }
+    public ProfileAvatar ProfileAvatar { get; set; } = null!;
+    public ICollection<BookTransaction> Transactions { get; } = new List<BookTransaction>();
+    public ICollection<UserFavoritesBook> Favorites { get; } = new List<UserFavoritesBook>();
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
+    public DateTime? DeletedAt { get; set; }
 }

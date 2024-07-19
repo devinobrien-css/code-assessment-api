@@ -87,18 +87,6 @@ public class Model
 }
 ```
 
-Additionally, create a database context file `[MODEL_NAME]Context.cs` for the new model:
-
-```cs
-public class ModelContext : DbContext
-{
-    public ModelContext(DbContextOptions<ModelContext> options)
-        : base(options)
-    {}
-    ...
-}
-```
-
 &nbsp;
 
 ### Controller Development
@@ -112,6 +100,12 @@ dotnet aspnet-codegenerator controller -name [MODEL_NAME]Controller -async -api 
 Adjust the controller as required for the instance.
 
 &nbsp;
+
+### Authenticating Endpoints
+
+&nbsp;
+
+Add `[Authorization]` above the route
 
 ### Migration Scripts
 

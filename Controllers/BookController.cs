@@ -45,8 +45,6 @@ namespace code_assessment_api.Controllers
         [Authorize(Roles = "Employee")]
         public async Task<IActionResult> PatchBook(int id, PatchBookRequest book)
         {
-            Console.WriteLine("------------------");
-            Console.WriteLine("Book: " + book.ToJson());
             await _bookService.UpdateBookAsync(id, book);
             return NoContent();
         }
@@ -56,8 +54,6 @@ namespace code_assessment_api.Controllers
         [Authorize(Roles = "Employee")]
         public async Task<ActionResult<Book>> PostBook(PostBookRequest book)
         {   
-            Console.WriteLine("------------------");
-            Console.WriteLine("Book: " + book.ToJson());
             await _bookService.AddBookAsync(book);
             return NoContent();
         }
@@ -103,8 +99,6 @@ namespace code_assessment_api.Controllers
                 BookId = id
             };
 
-            Console.WriteLine("------------------");
-            Console.WriteLine("Review: " + newReview.ToJson());
 
             await _context.Reviews.AddAsync(newReview);
             await _context.SaveChangesAsync();

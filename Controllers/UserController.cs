@@ -49,12 +49,6 @@ namespace code_assessment_api.Controllers
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchUser(string id, UpdateUserRequest user)
         {
-            Console.WriteLine("--------------------");
-            Console.WriteLine("PATCH USER");
-
-            Console.WriteLine("ID: " + id);
-            Console.WriteLine("USER: " + user.ToJson());
-
             var identityUser = await _identityManager.GetUserAsync(User);
             if(identityUser == null)
             {

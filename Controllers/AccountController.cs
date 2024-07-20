@@ -68,17 +68,15 @@ public class AccountController(ApplicationDbContext context, UserManager<User> u
                 First = u.First,
                 Last = u.Last,
                 Email = u.Email,
-                ProfileAvatar = new ProfileAvatar
+                ProfileAvatar = u.ProfileAvatar == null ? null : new ProfileAvatar
                 {
                     Id = u.ProfileAvatar.Id,
                     Url = u.ProfileAvatar.Url
-                }
+                },
+
             }
         ).AsNoTracking()
         .SingleOrDefaultAsync(u => u.Id == identityUser.Id);
-
-        Console.WriteLine("-0-0-0-0-0-");
-        Console.WriteLine(user.ToJson());
 
         var userInfo = new UserInfoResponse
         {

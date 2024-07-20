@@ -136,8 +136,24 @@ Add `[Authorization]` above the route
 
 ### Migration Scripts
 
+Ensure .NET Entity Framework is installed
 ```bash
-dotnet ef migrations add NewMigrationTitle -0 Data/Migrations
+dotnet tool install --global dotnet-ef
+```
+
+Create a migration:
+```bash
+dotnet ef migrations add NewMigrationTitle -o Data/Migrations
+```
+
+Remove a migration:
+```bash
+dotnet ef migrations remove
+```
+
+Update the database:
+```bash
+dotnet ef database update
 ```
 
 &nbsp;
@@ -150,3 +166,5 @@ dotnet ef migrations add NewMigrationTitle -0 Data/Migrations
 [.NET Migrations](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli)
 [.NET Identity](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0)
 [Prevent Over Posting](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0)
+
+dotnet ef migrations add NullableProfilePicture -o Data/Migrations

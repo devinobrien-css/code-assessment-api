@@ -42,11 +42,9 @@ namespace code_assessment_api.Services
 
             if (user != null)
             {
-                Console.WriteLine("User found");
                 user.First = newData.First;
                 user.Last = newData.Last;
                 var res = await _context.SaveChangesAsync();
-                Console.WriteLine(res);
             }
 
         }

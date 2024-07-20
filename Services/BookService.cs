@@ -67,7 +67,7 @@ namespace code_assessment_api.Services
                         }
                     ).OrderBy(
                         r => r.DateReviewed
-                    ),
+                    ).ToList(),
                     AverageRating = b.Reviews.Average(
                         r => r.Rating
                     ),
@@ -137,7 +137,7 @@ namespace code_assessment_api.Services
                         }
                     ).OrderBy(
                         r => r.DateReviewed
-                    ),
+                    ).ToList(),
                     AverageRating = b.Reviews.Average(
                         r => r.Rating
                     ),
@@ -188,9 +188,6 @@ namespace code_assessment_api.Services
             bookToUpdate.UpdatedAt = DateTime.Now;
             
             var res = await _context.SaveChangesAsync();
-
-            Console.WriteLine("===================");
-            Console.WriteLine("Result: " + res);
 
             return bookToUpdate;
         }

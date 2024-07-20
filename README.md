@@ -11,6 +11,7 @@
 - Basic knowledge of [SQLServer](https://learn.microsoft.com/en-us/sql/sql-server/?view=sql-server-ver16)
 - [Docker](https://docs.docker.com/engine/install/) installed on your machine
 - [.NET Core 8+](https://dotnet.microsoft.com/download) installed on your machine
+- [Git](https://git-scm.com/download/) installed on your machine
 
 &nbsp;
 
@@ -63,10 +64,10 @@ cd ..
 dotnet restore
 ```
 
-### Generate a Development Cert
+### Generate & Trust a Development Cert
 
 ```bash
-dotnet dev-certs https
+dotnet dev-certs https --trust
 ```
 
 ### Start the application
@@ -81,7 +82,7 @@ dotnet run --launch-profile https
 
 ### View the OpenAPI Specs
 
-[The OpenAPI specs can now be found here](localhost:5098/swagger)
+[The OpenAPI specs can now be found here](https://localhost:7120/swagger)
 
 &nbsp;
 

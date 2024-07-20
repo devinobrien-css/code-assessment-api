@@ -110,14 +110,8 @@ Add `[Authorization]` above the route
 ### Migration Scripts
 
 ```bash
-dotnet ef migrations add NewMigrationTitle
+dotnet ef migrations add NewMigrationTitle -0 Data/Migrations
 ```
-
-&nbsp;
-
-### Creating a Seed Script
-
-SEED SCRIPT INFO
 
 &nbsp;
 

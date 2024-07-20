@@ -47,15 +47,41 @@
 
 ## Getting Started / Running the app
 
+### Launch an instance of SQL Server
+
+Run the following docker script to launch a container hosting SQL Server:
+
+```bash
+cd docker
+bash build.sh
+cd ..
+```
+
+### Restore installs
+
+```bash
+dotnet restore
+```
+
+### Generate a Development Cert
+
+```bash
+dotnet dev-certs https
+```
+
+### Start the application
+
+Once the instance is live, start the app:
+
 ```bash
 dotnet run --launch-profile https
 ```
 
 &nbsp;
 
-## OpenAPI Specs
+### View the OpenAPI Specs
 
-localhost:5044/swagger
+[The OpenAPI specs can now be found here](localhost:5098/swagger)
 
 &nbsp;
 

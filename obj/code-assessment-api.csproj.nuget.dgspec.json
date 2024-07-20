@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "/Users/devinpobrien/Code/code-assessment-api/code-assessment-api.csproj": {}
+    "/Users/devinobrien/Documents/Code/GitHub/code-assessment-api/code-assessment-api.csproj": {}
   },
   "projects": {
-    "/Users/devinpobrien/Code/code-assessment-api/code-assessment-api.csproj": {
+    "/Users/devinobrien/Documents/Code/GitHub/code-assessment-api/code-assessment-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/devinpobrien/Code/code-assessment-api/code-assessment-api.csproj",
+        "projectUniqueName": "/Users/devinobrien/Documents/Code/GitHub/code-assessment-api/code-assessment-api.csproj",
         "projectName": "code-assessment-api",
-        "projectPath": "/Users/devinpobrien/Code/code-assessment-api/code-assessment-api.csproj",
-        "packagesPath": "/Users/devinpobrien/.nuget/packages/",
-        "outputPath": "/Users/devinpobrien/Code/code-assessment-api/obj/",
+        "projectPath": "/Users/devinobrien/Documents/Code/GitHub/code-assessment-api/code-assessment-api.csproj",
+        "packagesPath": "/Users/devinobrien/.nuget/packages/",
+        "outputPath": "/Users/devinobrien/Documents/Code/GitHub/code-assessment-api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/devinpobrien/.nuget/NuGet/NuGet.Config"
+          "/Users/devinobrien/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -57,6 +56,10 @@
               "version": "[8.0.7, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[8.0.7, )"
             },

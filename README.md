@@ -18,7 +18,7 @@
 ## Repository Overview
 
 ```bash
-/MyWebAPI
+/CodeAssessmentAPI
 │
 ├── /bin
 ├── /Controllers

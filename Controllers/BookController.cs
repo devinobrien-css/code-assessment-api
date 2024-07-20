@@ -8,8 +8,10 @@ using code_assessment_api.Services;
 using code_assessment_api.ViewModels.Responses;
 using code_assessment_api.ViewModels.Requests;
 
+
 namespace code_assessment_api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class BookController(ApplicationDbContext context) : ControllerBase
@@ -29,44 +31,23 @@ namespace code_assessment_api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Book>> GetBook(int id)
         {
-            var book = await _context.Books.FindAsync(id);
-
-            if (book == null)
+            if(!BookExists(id))
             {
                 return NotFound();
             }
 
-            return book;
+            var book = await _bookService.GetBookAsync(id);
+            return Ok(book);
         }
 
-        // PUT: api/Book/5
-        [HttpPut("{id}")]
-        [Authorize(Roles = "sEmployee")]
-        public async Task<IActionResult> PutBook(int id, Book book)
+        // PATCH: api/Book/5
+        [HttpPatch("{id}")]
+        [Authorize(Roles = "Employee")]
+        public async Task<IActionResult> PatchBook(int id, PatchBookRequest book)
         {
-            if (id != book.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(book).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BookExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            Console.WriteLine("------------------");
+            Console.WriteLine("Book: " + book.ToJson());
+            await _bookService.UpdateBookAsync(id, book);
             return NoContent();
         }
 
@@ -101,6 +82,34 @@ namespace code_assessment_api.Controllers
         private bool BookExists(int id)
         {
             return _context.Books.Any(e => e.Id == id);
+        }
+
+        // POST: api/Book/{id}/review
+        [HttpPost("{id}/review")]
+        public async Task<ActionResult> PostReview(int id, PostReviewRequest review)
+        {
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            var newReview = new Review
+            {
+                Rating = review.Rating,
+                Description = review.Description,
+                UserId = review.UserId,
+                DateReviewed = DateTime.Now.ToString("yyyy-MM-dd"),
+                BookId = id
+            };
+
+            Console.WriteLine("------------------");
+            Console.WriteLine("Review: " + newReview.ToJson());
+
+            await _context.Reviews.AddAsync(newReview);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

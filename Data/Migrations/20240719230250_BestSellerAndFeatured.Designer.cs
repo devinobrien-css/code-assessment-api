@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using code_assessment_api.Data;
 
@@ -11,9 +12,11 @@ using code_assessment_api.Data;
 namespace code_assessment_api.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240719230250_BestSellerAndFeatured")]
+    partial class BestSellerAndFeatured
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,340 +222,340 @@ namespace code_assessment_api.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Author = "Thea Walsh",
+                            Author = "Chase Ratke",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Voluptas asperiores eligendi adipisci beatae sed assumenda aut. Et nihil reprehenderit quos assumenda vel. Consequatur occaecati maiores. Error quas eum minus.",
-                            GenreId = 1,
-                            ISBN = "aaa00896-bd9b-2ca4-c565-ed7789a92bed",
+                            Description = "Facilis quos qui consequuntur. Provident inventore qui ut provident repellendus. Qui pariatur voluptatem expedita et et reprehenderit accusamus odit quaerat.",
+                            GenreId = 5,
+                            ISBN = "4d96acdd-b52f-9de6-a817-1c5ded980bbf",
                             Image = "https://drive.google.com/thumbnail?id=1zycl7EiCECK541ialA9UCrs9HdfddUQb&sz=w1000",
                             IsBestSeller = false,
                             IsFeatured = true,
-                            Pages = 190,
-                            Publisher = "Lubowitz LLC",
-                            Title = "Quibusdam et ipsam.",
+                            Pages = 482,
+                            Publisher = "Aufderhar - Stamm",
+                            Title = "Assumenda provident consequatur.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2024
                         },
                         new
                         {
                             Id = 2,
-                            Author = "Alayna Conroy",
+                            Author = "Lindsay Koch",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Facilis et rerum. Voluptate dicta sed. Accusamus qui nulla quasi. Placeat asperiores deserunt.",
-                            GenreId = 1,
-                            ISBN = "f1794f01-0407-20ae-2024-d9474816051f",
+                            Description = "Placeat et ut. Iusto odit id laborum molestiae quibusdam sunt sed fuga. Est nostrum magnam magni maxime quibusdam dolores rerum consequatur. Magnam veniam reiciendis quisquam. Est odio et eum quia consequatur sed molestias molestiae sunt.",
+                            GenreId = 2,
+                            ISBN = "20a5b82f-6eba-fc8d-bc16-ff9f36dab455",
                             Image = "https://drive.google.com/thumbnail?id=1C4sRKzQrFUDNQ1X12WVeKbX0knOoC6tA&sz=w1000",
-                            IsBestSeller = false,
-                            IsFeatured = true,
-                            Pages = 188,
-                            Publisher = "Muller Group",
-                            Title = "Doloribus qui sequi.",
+                            IsBestSeller = true,
+                            IsFeatured = false,
+                            Pages = 186,
+                            Publisher = "West - Hayes",
+                            Title = "Qui neque nulla.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Year = 2023
+                            Year = 2024
                         },
                         new
                         {
                             Id = 3,
-                            Author = "Delores Feest",
+                            Author = "Kaela Labadie",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Doloribus neque eaque nulla non ut. Minus sed voluptatibus praesentium accusantium. Voluptatem suscipit exercitationem.",
-                            GenreId = 5,
-                            ISBN = "899a6ae2-e42d-38ad-be64-1fd9418403ef",
+                            Description = "Odit iusto tempore nemo omnis ea quos nisi et deleniti. Alias quia eum iure nisi illo delectus velit vel. Exercitationem quo nihil quo labore labore. Illo laboriosam officia ratione nemo natus ullam non.",
+                            GenreId = 1,
+                            ISBN = "bbfb9b08-f8a5-c4c2-a49e-2d931c90a33e",
                             Image = "https://drive.google.com/thumbnail?id=12xFmb08WRoRr5omVtZ38Obo1imbutVlh&sz=w1000",
                             IsBestSeller = false,
                             IsFeatured = true,
-                            Pages = 415,
-                            Publisher = "Robel Inc",
-                            Title = "Repellendus non dolor.",
+                            Pages = 426,
+                            Publisher = "Ritchie LLC",
+                            Title = "Et beatae qui.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Year = 2023
+                            Year = 2024
                         },
                         new
                         {
                             Id = 4,
-                            Author = "Josefina Gutmann",
+                            Author = "Natasha Heaney",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Mollitia sed molestiae autem dolores consequatur et debitis architecto. Rerum praesentium veniam et quis. Omnis velit doloribus molestiae. Sit rerum qui quia quod vero beatae ut. In ut nam ut odio quod aut corporis et.",
-                            GenreId = 5,
-                            ISBN = "dedb5a51-3b26-9c66-f2e2-af3890c8d078",
+                            Description = "Dignissimos sit qui consequatur id sapiente necessitatibus sapiente. Sapiente fugiat quam voluptas consequatur consequatur nisi. Doloremque suscipit fuga voluptates quaerat in architecto perferendis. Eos est voluptatem sit consequatur impedit error rerum voluptate.",
+                            GenreId = 4,
+                            ISBN = "3adb764c-6237-e90f-12c8-bc85622c63f2",
                             Image = "https://drive.google.com/thumbnail?id=1bOcpnwGFqsWJVLKxwXC4pdQgo5M1wzDi&sz=w1000",
                             IsBestSeller = false,
-                            IsFeatured = false,
-                            Pages = 462,
-                            Publisher = "Dibbert LLC",
-                            Title = "Explicabo eligendi id.",
+                            IsFeatured = true,
+                            Pages = 137,
+                            Publisher = "Rau - Bergstrom",
+                            Title = "Quibusdam aut non.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2024
                         },
                         new
                         {
                             Id = 5,
-                            Author = "Missouri Reichert",
+                            Author = "Deven Towne",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Quo et id quos molestias vero autem repellendus perspiciatis soluta. Sapiente suscipit aliquam fuga est ut aut ut ut qui. Nulla aliquam et rerum ut id explicabo nihil non.",
-                            GenreId = 3,
-                            ISBN = "2570d8e2-752b-ca8f-0e3c-4cba6611e30e",
+                            Description = "Et quam autem rerum ut illum sit omnis et magni. Quaerat occaecati molestiae repellendus porro exercitationem voluptatem neque ipsam est. Aut repellat et sit repudiandae. Est quidem incidunt.",
+                            GenreId = 4,
+                            ISBN = "fb98eef5-39b6-85c8-5bfb-71c27e200808",
                             Image = "https://drive.google.com/thumbnail?id=1Eu7yiiaAMfb0ktMOKhJZN6htKhF-TPDc&sz=w1000",
-                            IsBestSeller = true,
+                            IsBestSeller = false,
                             IsFeatured = false,
-                            Pages = 308,
-                            Publisher = "Cruickshank Inc",
-                            Title = "Ad ut dolorem.",
+                            Pages = 342,
+                            Publisher = "Simonis - Mraz",
+                            Title = "Sequi est fugiat.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2024
                         },
                         new
                         {
                             Id = 6,
-                            Author = "Michelle Ryan",
+                            Author = "Larissa Marks",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Unde dolor recusandae in suscipit perspiciatis nemo. Ut earum nam. Quia qui molestias alias necessitatibus eos. Asperiores nihil quia consequatur qui ducimus consectetur aperiam. Et et error enim nemo dolor voluptatem voluptatum. Et aliquam impedit quis est harum et et et.",
-                            GenreId = 1,
-                            ISBN = "281fcd62-d583-53a1-e797-bab44ffd0f43",
+                            Description = "In ut deleniti laborum eaque aspernatur architecto. Culpa id expedita et. Quo necessitatibus accusantium fuga error voluptatibus voluptatem. Adipisci fuga explicabo pariatur error facere reiciendis minus voluptatibus.",
+                            GenreId = 4,
+                            ISBN = "b36976a5-349a-c5d4-20e5-acb82f2f88e2",
                             Image = "https://drive.google.com/thumbnail?id=1Hk2fvOg7hpmRwKWc-QTl82NGerqKib71&sz=w1000",
                             IsBestSeller = true,
-                            IsFeatured = true,
-                            Pages = 312,
-                            Publisher = "Gulgowski and Sons",
-                            Title = "Reprehenderit quia veritatis.",
+                            IsFeatured = false,
+                            Pages = 483,
+                            Publisher = "Schultz, Rath and Hermiston",
+                            Title = "Praesentium quis vitae.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2024
                         },
                         new
                         {
                             Id = 7,
-                            Author = "Rusty Adams",
+                            Author = "Darron Bernier",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Quisquam error autem qui non tempore aut quas. Repellendus at enim dolore quisquam eveniet a rerum fuga. Veniam earum corporis. Sapiente rerum et. Earum laboriosam eum aliquid.",
-                            GenreId = 1,
-                            ISBN = "6c2e6fac-ec72-63b6-97b8-b4bd29040786",
+                            Description = "Incidunt tempore rerum laboriosam quis earum possimus alias dignissimos deserunt. Sint sunt deserunt alias repellendus sit non harum in. Molestiae et esse. Dicta molestiae ut aut vitae molestias laudantium quis.",
+                            GenreId = 3,
+                            ISBN = "869c8a80-526b-cba6-7d67-77f50885edef",
                             Image = "https://drive.google.com/thumbnail?id=1cozBSsETbbn8YWA27-cyfpxAgOKX-FwJ&sz=w1000",
-                            IsBestSeller = false,
+                            IsBestSeller = true,
                             IsFeatured = false,
-                            Pages = 463,
-                            Publisher = "Lindgren - Okuneva",
-                            Title = "Eum ratione non.",
+                            Pages = 355,
+                            Publisher = "Wisoky, Homenick and Powlowski",
+                            Title = "Laborum omnis odio.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Year = 2024
+                            Year = 2023
                         },
                         new
                         {
                             Id = 8,
-                            Author = "Marquise Waelchi",
+                            Author = "Chad Maggio",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Vero et quam ut neque sint magni atque. Laudantium magnam qui id sint sint ullam aliquam sint accusamus. Rerum ut voluptatem cupiditate. Numquam sunt esse rerum autem dicta aut.",
-                            GenreId = 3,
-                            ISBN = "9b7fedb2-22f2-966d-1747-7a7a5d052af1",
+                            Description = "Est ut reprehenderit architecto facilis in sint iure sed tempora. Sequi qui amet velit. Dolorum quia qui.",
+                            GenreId = 5,
+                            ISBN = "25c0a792-e3ea-4eeb-3347-bbc2d14bea99",
                             Image = "https://drive.google.com/thumbnail?id=1X_DcLIDCuXHtlh2LDJrS07h8lNcK1vXl&sz=w1000",
-                            IsBestSeller = true,
+                            IsBestSeller = false,
                             IsFeatured = false,
-                            Pages = 100,
-                            Publisher = "Bednar LLC",
-                            Title = "Est voluptas quod.",
+                            Pages = 132,
+                            Publisher = "Howe, Cummings and Botsford",
+                            Title = "Doloribus natus ipsam.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2024
                         },
                         new
                         {
                             Id = 9,
-                            Author = "Isabel Lockman",
+                            Author = "Emmie Kuhic",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Sit odit nam repellendus quaerat a. Odit neque voluptatem unde qui ipsum labore officiis voluptatem id. Iste nesciunt perferendis aspernatur a. Voluptatem id et voluptates voluptas et ab.",
-                            GenreId = 3,
-                            ISBN = "12f601f8-6922-aeae-44b9-636f03cff3db",
+                            Description = "Fuga rerum sed odio. Inventore totam aut explicabo saepe veniam. Provident dignissimos provident.",
+                            GenreId = 2,
+                            ISBN = "3872ebd5-fba1-15de-cb2c-fac8994deb27",
                             Image = "https://drive.google.com/thumbnail?id=1UMX2PhE5C46EQuRL8UkbdUqIKGuBNbJ5&sz=w1000",
                             IsBestSeller = false,
                             IsFeatured = true,
-                            Pages = 287,
-                            Publisher = "Johns Inc",
-                            Title = "Nam et repudiandae.",
+                            Pages = 115,
+                            Publisher = "Kilback Group",
+                            Title = "Sit et debitis.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2023
                         },
                         new
                         {
                             Id = 10,
-                            Author = "Maudie Goodwin",
+                            Author = "Ashton Little",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Iusto voluptas vel totam. Enim repellendus aut laborum. Modi officia qui. Ut nihil optio iure incidunt assumenda qui. Sed suscipit est autem exercitationem dolor dolor. Quo aut adipisci recusandae voluptas officiis.",
-                            GenreId = 1,
-                            ISBN = "a19dd26f-555a-21a4-33ef-d799dca8c902",
-                            Image = "https://drive.google.com/thumbnail?id=1kSEao7g56ZMPYkBxqCQi70rpfxSqGvMK&sz=w1000",
-                            IsBestSeller = true,
-                            IsFeatured = true,
-                            Pages = 428,
-                            Publisher = "Sporer - White",
-                            Title = "Neque repellendus deserunt.",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Year = 2024
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Author = "Nathen Kassulke",
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Mollitia maiores velit omnis et nisi et excepturi. Ea autem voluptatem amet dolorem ratione sit ea est est. Earum qui illo nemo dolore. Consequatur vel neque quaerat eum delectus qui. Vitae cupiditate ea perferendis voluptatem sed dolore qui culpa.",
+                            Description = "Nam est sit sequi quis est. Voluptas delectus omnis est quis enim tempora deserunt distinctio sit. Et excepturi architecto.",
                             GenreId = 2,
-                            ISBN = "1e3adb0b-1d79-d375-194f-3837466a89a1",
-                            Image = "https://drive.google.com/thumbnail?id=1dwug9Rd51uRSIR61N0de32UGuZ1Ns3WH&sz=w1000",
-                            IsBestSeller = true,
+                            ISBN = "0ced44bc-d89a-0403-c63b-49535bd9165b",
+                            Image = "https://drive.google.com/thumbnail?id=1kSEao7g56ZMPYkBxqCQi70rpfxSqGvMK&sz=w1000",
+                            IsBestSeller = false,
                             IsFeatured = true,
-                            Pages = 443,
-                            Publisher = "Skiles LLC",
-                            Title = "Labore quia ratione.",
+                            Pages = 494,
+                            Publisher = "Kulas - Von",
+                            Title = "Harum odio id.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2023
                         },
                         new
                         {
-                            Id = 12,
-                            Author = "Alejandrin Welch",
+                            Id = 11,
+                            Author = "Braulio Kemmer",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Tempora suscipit modi unde praesentium dolore non voluptatem. Libero et molestiae sint beatae quas animi. Quas deserunt magni consectetur quos sapiente. Illum et et in rem quas aut blanditiis veniam molestiae. Et eaque debitis vitae ab unde ut.",
-                            GenreId = 3,
-                            ISBN = "20b8958a-fd8f-1027-9fa2-0fcf4695bf5c",
-                            Image = "https://drive.google.com/thumbnail?id=1UCje5bgDDxlWMWdYSK8tRgwMp-LkYM27&sz=w1000",
+                            Description = "Numquam architecto maxime quod beatae. Impedit ad qui ullam dolor ipsam sit hic perspiciatis. Aspernatur iste pariatur alias quis rem quo aut. Distinctio natus inventore est occaecati ut consequatur vel quis perferendis. Quidem maiores laudantium ducimus officia in molestias est voluptatem. Saepe aspernatur consectetur optio id et quis sint fugiat.",
+                            GenreId = 5,
+                            ISBN = "5b1fede0-acc1-3fd0-6c1e-271aad1837af",
+                            Image = "https://drive.google.com/thumbnail?id=1dwug9Rd51uRSIR61N0de32UGuZ1Ns3WH&sz=w1000",
                             IsBestSeller = true,
                             IsFeatured = true,
-                            Pages = 191,
-                            Publisher = "Bednar - Zemlak",
-                            Title = "Vitae minima voluptates.",
+                            Pages = 201,
+                            Publisher = "Lueilwitz and Sons",
+                            Title = "Quisquam perferendis nam.",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Year = 2024
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Author = "Melyssa Runolfsson",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Tenetur sed quibusdam minus neque recusandae non voluptates minus hic. Aut ipsa dolor dolores dolor hic ut et. Ea fugiat accusamus ipsa ipsam iure non veniam laboriosam minima.",
+                            GenreId = 2,
+                            ISBN = "39d2fda8-ed15-cbce-cf3f-1805bdb7fd42",
+                            Image = "https://drive.google.com/thumbnail?id=1UCje5bgDDxlWMWdYSK8tRgwMp-LkYM27&sz=w1000",
+                            IsBestSeller = true,
+                            IsFeatured = false,
+                            Pages = 481,
+                            Publisher = "Cartwright, Homenick and Hansen",
+                            Title = "Rerum labore enim.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2024
                         },
                         new
                         {
                             Id = 13,
-                            Author = "Herminia Breitenberg",
+                            Author = "Cole Dach",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Libero et iste reiciendis ex rerum recusandae. Consequatur sequi beatae. Tempore rerum omnis culpa eos itaque quod saepe unde. Tempora exercitationem neque dolor dolorem sint voluptatibus quam beatae alias. Praesentium sint autem corporis omnis. Voluptate sed reiciendis voluptatum similique.",
+                            Description = "Qui ipsum quam impedit aliquam dolor dolorem velit. Veritatis sapiente quas error harum. Sint modi fuga rem sit.",
                             GenreId = 1,
-                            ISBN = "967866d8-e493-d64a-1da1-e37dc1890456",
+                            ISBN = "a108ffcc-f259-d1f8-05fb-01c92bc90414",
                             Image = "https://drive.google.com/thumbnail?id=17pwzIwvq6pyTJyqQ9ooT7dRXMwIHVNeU&sz=w1000",
-                            IsBestSeller = true,
+                            IsBestSeller = false,
                             IsFeatured = false,
-                            Pages = 301,
-                            Publisher = "Hansen, Skiles and Ledner",
-                            Title = "Ut enim quia.",
+                            Pages = 342,
+                            Publisher = "Mante - Pagac",
+                            Title = "Numquam placeat sapiente.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2024
                         },
                         new
                         {
                             Id = 14,
-                            Author = "Kathryne Wintheiser",
+                            Author = "Jerrell Hilll",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Nam asperiores sit qui rem omnis nemo magni. Esse iure alias. Qui ullam autem nulla. Quasi ipsa accusamus laboriosam quae exercitationem eos corrupti sunt. Ad in quas sed minus. Itaque hic optio blanditiis officiis aut earum in.",
-                            GenreId = 3,
-                            ISBN = "3e002e44-891f-fb37-567a-d8acaa765504",
+                            Description = "Optio quia quia quas veniam itaque ea aut molestiae voluptas. Quaerat et a quia amet. Quisquam unde voluptate. Perferendis laboriosam eaque est quo impedit. Soluta ut rerum voluptates maxime.",
+                            GenreId = 1,
+                            ISBN = "a5c8da3e-3f1c-3104-1961-3e56e1a404dd",
                             Image = "https://drive.google.com/thumbnail?id=1VGdbU9YQSgzTyesLYdt6xgANcWlOzVlX&sz=w1000",
-                            IsBestSeller = true,
+                            IsBestSeller = false,
                             IsFeatured = false,
-                            Pages = 257,
-                            Publisher = "Becker - Stracke",
-                            Title = "Facere similique aperiam.",
+                            Pages = 203,
+                            Publisher = "Daugherty, Lind and Kuhn",
+                            Title = "Et nostrum voluptate.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Year = 2024
+                            Year = 2023
                         },
                         new
                         {
                             Id = 15,
-                            Author = "Dejuan Walsh",
+                            Author = "Jackson Farrell",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Ut numquam quam dolor. Ut dicta soluta. Ut placeat id quia ad laboriosam recusandae quos. Veniam ad dolores adipisci odio quibusdam itaque omnis et eveniet. Maiores enim corrupti voluptatibus voluptatem corrupti non natus voluptatum. Exercitationem similique eum ea sunt quis voluptas.",
-                            GenreId = 1,
-                            ISBN = "9e6c6e06-d0a2-99f4-d5ee-a8320c3e50e1",
+                            Description = "Quis doloribus voluptatem fuga itaque ipsa explicabo eius qui. Et nisi blanditiis eum. A quia reiciendis aut minima qui qui. Facilis dolorem cumque incidunt consequatur commodi maiores ut. Sit repudiandae explicabo quisquam beatae ut mollitia ut sapiente et.",
+                            GenreId = 5,
+                            ISBN = "ebe88e3d-093f-eb08-0f69-ecb9347e4178",
                             Image = "https://drive.google.com/thumbnail?id=1-wmBdCw9y0cuT_jaYQVd8zUtQ5Y6WydG&sz=w1000",
-                            IsBestSeller = true,
+                            IsBestSeller = false,
                             IsFeatured = false,
-                            Pages = 432,
-                            Publisher = "Metz, Parker and Schroeder",
-                            Title = "Quibusdam quasi vel.",
+                            Pages = 201,
+                            Publisher = "Abernathy - Yost",
+                            Title = "Cumque itaque consequuntur.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2024
                         },
                         new
                         {
                             Id = 16,
-                            Author = "Garret McCullough",
+                            Author = "Gertrude Russel",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Libero quia sunt rerum modi voluptatem quod quae. Ipsum sapiente blanditiis ut est reiciendis et molestiae. Rem velit atque.",
-                            GenreId = 5,
-                            ISBN = "7a9b8228-d9fe-b4ff-f600-937b2c2381d7",
+                            Description = "Quia quia magni commodi. Quia itaque vitae aliquid enim dicta. Aliquid quos debitis molestias distinctio est velit.",
+                            GenreId = 4,
+                            ISBN = "bc768677-ea53-fce9-e5b3-caa350e2e426",
                             Image = "https://drive.google.com/thumbnail?id=17LCGXsaF8chECGxR5IXHkj5qc7UrWIqw&sz=w1000",
                             IsBestSeller = false,
-                            IsFeatured = true,
-                            Pages = 316,
-                            Publisher = "Hand - Stracke",
-                            Title = "Cum eveniet eum.",
+                            IsFeatured = false,
+                            Pages = 367,
+                            Publisher = "Stroman LLC",
+                            Title = "Est tenetur laboriosam.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2024
                         },
                         new
                         {
                             Id = 17,
-                            Author = "Pablo Abernathy",
+                            Author = "Brisa Senger",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Facilis magni sit molestias odit voluptas eum atque sequi et. Nam esse iure aut quis vel est consequuntur ipsa. Id sapiente doloribus explicabo aliquam est non sit tempora ab. Illo eum laboriosam dicta impedit. Dolorem quia quisquam cum ullam possimus ea.",
-                            GenreId = 4,
-                            ISBN = "32c4474e-03b9-37e3-4523-671f8f3e97a8",
+                            Description = "Nam eum et. Hic excepturi at voluptatibus. Voluptatem possimus adipisci et doloremque possimus tenetur. Mollitia at in. Quis tenetur tempore eaque tempore id.",
+                            GenreId = 5,
+                            ISBN = "ed89564a-9483-07da-8b53-467ebe607c3d",
                             Image = "https://drive.google.com/thumbnail?id=1V5-GfhMxAUE5QhKYGDtE1XlAjl3sRZFN&sz=w1000",
                             IsBestSeller = false,
-                            IsFeatured = true,
-                            Pages = 233,
-                            Publisher = "Johnston, Ryan and Bogan",
-                            Title = "Qui consequatur minus.",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Year = 2023
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Author = "Asia Fritsch",
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Et eaque qui optio similique libero odit recusandae harum. Aut doloremque placeat velit aut voluptate dolores. Ratione qui et perferendis sed nobis. Perferendis voluptatibus aperiam reiciendis ea recusandae in dolorem. Quis tempore aut eos magni quo.",
-                            GenreId = 5,
-                            ISBN = "d86b3a91-7456-3389-7c66-1cdf78cacd7d",
-                            Image = "https://drive.google.com/thumbnail?id=129hAaWbWcEXubYXVEy2-a4Gbs0ulv9La&sz=w1000",
-                            IsBestSeller = false,
-                            IsFeatured = true,
-                            Pages = 167,
-                            Publisher = "Kohler - Sipes",
-                            Title = "Facere ut est.",
+                            IsFeatured = false,
+                            Pages = 254,
+                            Publisher = "Oberbrunner LLC",
+                            Title = "Sit sed facere.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2024
                         },
                         new
                         {
-                            Id = 19,
-                            Author = "Velma Mertz",
+                            Id = 18,
+                            Author = "Mauricio Funk",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Molestiae sit sunt sunt nostrum sed placeat occaecati. Sit nesciunt sequi deserunt nihil quasi non illum aut. Officiis ut qui ab cupiditate nemo a accusantium ipsa. Et vel quaerat et maxime eum qui totam ut. Maxime aperiam est minus et non. Quas et qui voluptates officia soluta accusantium voluptas nihil.",
-                            GenreId = 1,
-                            ISBN = "52936059-6933-6f78-56df-0642e44938e5",
-                            Image = "https://drive.google.com/thumbnail?id=1iS1vCXQNst3Cm0hkq0m9m53HlFXB2e_b&sz=w1000",
+                            Description = "Cum sequi est cumque quaerat aspernatur debitis. Enim non in natus rem dolor dolorem similique. Laudantium voluptatem voluptas harum qui et aut repudiandae sed quas. Est ea qui sed sit est aut fugiat quia. Eum magni et ut labore. In perferendis sint id eligendi non minus.",
+                            GenreId = 3,
+                            ISBN = "f1afb1c0-a7cf-cf1b-6920-ec5705a65c7d",
+                            Image = "https://drive.google.com/thumbnail?id=129hAaWbWcEXubYXVEy2-a4Gbs0ulv9La&sz=w1000",
                             IsBestSeller = true,
                             IsFeatured = true,
-                            Pages = 169,
-                            Publisher = "Bergstrom Inc",
-                            Title = "Ut exercitationem aliquid.",
+                            Pages = 189,
+                            Publisher = "Schultz and Sons",
+                            Title = "Ea cumque quod.",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Author = "Kenya Reinger",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Ea iste vero a quis ut et. Consequatur et officiis quod sed. Voluptates et quos. Voluptatem beatae blanditiis commodi explicabo eos et possimus rerum.",
+                            GenreId = 4,
+                            ISBN = "d7568597-a115-8da8-013d-c3535fff5f01",
+                            Image = "https://drive.google.com/thumbnail?id=1iS1vCXQNst3Cm0hkq0m9m53HlFXB2e_b&sz=w1000",
+                            IsBestSeller = false,
+                            IsFeatured = false,
+                            Pages = 428,
+                            Publisher = "Quigley, Windler and Cremin",
+                            Title = "Voluptates quas consequatur.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2023
                         },
                         new
                         {
                             Id = 20,
-                            Author = "Kaci Weissnat",
+                            Author = "David Larkin",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Non rerum voluptatem dolores optio quos. Autem perferendis qui ut. Velit esse accusamus ipsam qui. Dolorum consectetur sed natus omnis voluptatem optio voluptates eum. Sed quia blanditiis numquam eos veritatis at sequi aut. Aut possimus eaque.",
-                            GenreId = 5,
-                            ISBN = "a3af90ad-ec7f-989e-04f5-b734d1026d3e",
+                            Description = "Dolores omnis at quod ipsam fugiat fugiat dolores. Maiores perferendis est quidem reprehenderit et voluptate culpa. Dolores cum aperiam tempora. Ab et maxime dolorum et quae omnis praesentium. Omnis voluptatum voluptatem ad eaque et autem voluptatum molestias consequatur. Ut quis voluptatum rerum.",
+                            GenreId = 3,
+                            ISBN = "5457e10a-55cf-efb5-b2a8-9d745564eb2c",
                             Image = "https://drive.google.com/thumbnail?id=1EsQ7X9KyU57dg3N3AjHn_xtUtauiElDF&sz=w1000",
                             IsBestSeller = true,
                             IsFeatured = false,
-                            Pages = 234,
-                            Publisher = "Volkman - Rippin",
-                            Title = "Minima dicta eveniet.",
+                            Pages = 119,
+                            Publisher = "Kozey - Torp",
+                            Title = "Dolorum dolores assumenda.",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2023
                         });
@@ -604,47 +607,47 @@ namespace code_assessment_api.Data.Migrations
                         new
                         {
                             Id = 1,
-                            BookId = 7,
-                            CheckOutTime = new DateTime(2024, 7, 19, 23, 20, 47, 746, DateTimeKind.Local).AddTicks(7980),
+                            BookId = 20,
+                            CheckOutTime = new DateTime(2024, 7, 19, 19, 2, 49, 849, DateTimeKind.Local).AddTicks(7910),
                             CheckedOutById = "5",
-                            DueTime = new DateTime(2024, 7, 24, 23, 20, 47, 746, DateTimeKind.Local).AddTicks(9210),
+                            DueTime = new DateTime(2024, 7, 24, 19, 2, 49, 849, DateTimeKind.Local).AddTicks(8890),
                             UserId = "3"
                         },
                         new
                         {
                             Id = 2,
-                            BookId = 19,
-                            CheckOutTime = new DateTime(2024, 7, 19, 23, 20, 47, 746, DateTimeKind.Local).AddTicks(7980),
+                            BookId = 5,
+                            CheckOutTime = new DateTime(2024, 7, 19, 19, 2, 49, 849, DateTimeKind.Local).AddTicks(7910),
                             CheckedOutById = "5",
-                            DueTime = new DateTime(2024, 7, 24, 23, 20, 47, 746, DateTimeKind.Local).AddTicks(9720),
-                            UserId = "2"
+                            DueTime = new DateTime(2024, 7, 24, 19, 2, 49, 849, DateTimeKind.Local).AddTicks(9420),
+                            UserId = "1"
                         },
                         new
                         {
                             Id = 3,
-                            BookId = 10,
-                            CheckOutTime = new DateTime(2024, 7, 19, 23, 20, 47, 746, DateTimeKind.Local).AddTicks(7980),
+                            BookId = 12,
+                            CheckOutTime = new DateTime(2024, 7, 19, 19, 2, 49, 849, DateTimeKind.Local).AddTicks(7910),
                             CheckedOutById = "5",
-                            DueTime = new DateTime(2024, 7, 24, 23, 20, 47, 746, DateTimeKind.Local).AddTicks(9740),
-                            UserId = "2"
+                            DueTime = new DateTime(2024, 7, 24, 19, 2, 49, 849, DateTimeKind.Local).AddTicks(9430),
+                            UserId = "1"
                         },
                         new
                         {
                             Id = 4,
-                            BookId = 10,
-                            CheckOutTime = new DateTime(2024, 7, 19, 23, 20, 47, 746, DateTimeKind.Local).AddTicks(7980),
+                            BookId = 2,
+                            CheckOutTime = new DateTime(2024, 7, 19, 19, 2, 49, 849, DateTimeKind.Local).AddTicks(7910),
                             CheckedOutById = "5",
-                            DueTime = new DateTime(2024, 7, 24, 23, 20, 47, 746, DateTimeKind.Local).AddTicks(9750),
+                            DueTime = new DateTime(2024, 7, 24, 19, 2, 49, 849, DateTimeKind.Local).AddTicks(9440),
                             UserId = "1"
                         },
                         new
                         {
                             Id = 5,
-                            BookId = 7,
-                            CheckOutTime = new DateTime(2024, 7, 19, 23, 20, 47, 746, DateTimeKind.Local).AddTicks(7980),
+                            BookId = 1,
+                            CheckOutTime = new DateTime(2024, 7, 19, 19, 2, 49, 849, DateTimeKind.Local).AddTicks(7910),
                             CheckedOutById = "5",
-                            DueTime = new DateTime(2024, 7, 24, 23, 20, 47, 746, DateTimeKind.Local).AddTicks(9760),
-                            UserId = "2"
+                            DueTime = new DateTime(2024, 7, 24, 19, 2, 49, 849, DateTimeKind.Local).AddTicks(9450),
+                            UserId = "4"
                         });
                 });
 
@@ -895,223 +898,6 @@ namespace code_assessment_api.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("code_assessment_api.Models.Review", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DateReviewed")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Reviews");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BookId = 8,
-                            DateReviewed = "2023-12-01",
-                            Description = "Molestiae officiis molestiae voluptatem soluta velit. Omnis suscipit aliquid. Ea amet quo commodi aliquid nulla voluptate voluptates. Eum ad qui. Tempore deleniti reprehenderit quis nobis ullam doloribus in et. Excepturi voluptatem sed voluptas quia quam consequatur alias.",
-                            Rating = 4,
-                            UserId = "1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BookId = 5,
-                            DateReviewed = "2023-12-14",
-                            Description = "Ex temporibus fuga et sed. Vero nesciunt doloremque eos voluptas. Hic ipsum et molestias deleniti. Nobis ad quisquam sint nobis rerum iure. Quaerat mollitia quos totam corrupti. Voluptas nihil et quibusdam nemo placeat quasi omnis.",
-                            Rating = 4,
-                            UserId = "1"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            BookId = 1,
-                            DateReviewed = "2023-12-15",
-                            Description = "Repudiandae ea dolore voluptate delectus id. Voluptatem eaque totam consectetur voluptate ut dicta similique inventore voluptatem. Reiciendis qui et ut id.",
-                            Rating = 3,
-                            UserId = "4"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BookId = 1,
-                            DateReviewed = "2023-10-19",
-                            Description = "Ratione tempore molestiae. Repellendus non ducimus fugiat. Est occaecati neque temporibus eum quia qui voluptatem sapiente aliquam. Quas ratione eum nostrum veritatis. Voluptas et eligendi omnis qui qui. Magnam doloribus aut vel magni aut.",
-                            Rating = 4,
-                            UserId = "2"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            BookId = 6,
-                            DateReviewed = "2023-09-26",
-                            Description = "Ut voluptatem autem nemo omnis alias recusandae consectetur dicta. Sed quibusdam aspernatur modi dolore odit. Recusandae possimus quas illo. In sit illum. Architecto atque voluptates earum deleniti nobis dolore.",
-                            Rating = 1,
-                            UserId = "3"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            BookId = 2,
-                            DateReviewed = "2024-07-17",
-                            Description = "Et nihil harum velit. Quas ea fuga ut magni minus. Ut aut ex delectus sint. A mollitia maiores. Dolor magni voluptate voluptatem rem sed vel in rerum. Sed ipsam illum officia.",
-                            Rating = 5,
-                            UserId = "3"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            BookId = 4,
-                            DateReviewed = "2023-09-16",
-                            Description = "Ipsam quas in et soluta voluptas amet quas. Magni modi corrupti mollitia fugiat est natus pariatur animi. Enim delectus enim inventore sit id.",
-                            Rating = 2,
-                            UserId = "4"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            BookId = 8,
-                            DateReviewed = "2023-12-09",
-                            Description = "Distinctio a cumque sit doloribus incidunt sapiente dolores. Aut qui reprehenderit voluptatem eos. Fuga et temporibus beatae. Nemo ut dicta laboriosam quia.",
-                            Rating = 3,
-                            UserId = "4"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            BookId = 3,
-                            DateReviewed = "2023-11-04",
-                            Description = "Suscipit saepe odio enim. Saepe quis ut. Nobis praesentium repellendus quis esse consequatur. Rerum et ducimus. Voluptas unde error perferendis eaque id repellat.",
-                            Rating = 1,
-                            UserId = "1"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            BookId = 7,
-                            DateReviewed = "2024-04-19",
-                            Description = "Magni voluptas enim et. Dignissimos omnis ipsum. Nobis molestias voluptas nostrum.",
-                            Rating = 1,
-                            UserId = "1"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            BookId = 16,
-                            DateReviewed = "2024-02-26",
-                            Description = "Corporis velit nobis possimus sed quis. Sequi animi in voluptates. Et eum et aut suscipit voluptate explicabo voluptates consectetur sit.",
-                            Rating = 3,
-                            UserId = "2"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            BookId = 2,
-                            DateReviewed = "2023-08-11",
-                            Description = "Hic quia enim ut rerum sunt id non. Iusto doloremque vero temporibus deleniti nemo dolor qui. Illum maxime illo.",
-                            Rating = 2,
-                            UserId = "2"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            BookId = 9,
-                            DateReviewed = "2023-09-27",
-                            Description = "Consequuntur praesentium placeat iusto eligendi itaque. Nulla sapiente recusandae et voluptatem dolore amet eaque. Similique impedit ea sed blanditiis quod aut. Quos cumque fuga dolor expedita aliquam laborum molestias. Inventore quia explicabo illum. Eius ipsa vel laboriosam sint est inventore fugiat rem.",
-                            Rating = 4,
-                            UserId = "4"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            BookId = 3,
-                            DateReviewed = "2024-05-23",
-                            Description = "Excepturi iusto autem totam aspernatur veritatis. Nihil tempore voluptatem. Eligendi ratione quasi aut mollitia sit blanditiis nihil. Cumque minus quia saepe veniam aut fugiat quaerat ut.",
-                            Rating = 1,
-                            UserId = "1"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            BookId = 11,
-                            DateReviewed = "2024-01-03",
-                            Description = "Eligendi dolor quae in officiis corrupti. Delectus ex labore rerum voluptatum eum error. Et laudantium assumenda voluptate quas accusamus debitis eveniet.",
-                            Rating = 5,
-                            UserId = "2"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            BookId = 5,
-                            DateReviewed = "2024-04-06",
-                            Description = "Expedita minima sunt vel iure veniam. Provident aut nostrum rerum magnam iure aliquam esse qui. Esse vitae quia. Consequatur inventore nisi minima architecto. Eveniet hic et aperiam culpa.",
-                            Rating = 1,
-                            UserId = "4"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            BookId = 5,
-                            DateReviewed = "2024-06-23",
-                            Description = "Et explicabo distinctio quis deleniti pariatur. Facilis ipsum dignissimos qui sed fuga quibusdam optio omnis quisquam. Voluptatem enim non. Sapiente ab dolorum aut qui eaque minus rerum maiores. Quia qui nihil maxime voluptatem fugiat est. Repudiandae eveniet omnis iure.",
-                            Rating = 5,
-                            UserId = "3"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            BookId = 18,
-                            DateReviewed = "2024-01-13",
-                            Description = "Nesciunt rem sunt suscipit veniam quis eum sunt et et. Harum et quia. Vero voluptatem maxime quia exercitationem ut voluptatem. Sint et exercitationem aut ut possimus.",
-                            Rating = 5,
-                            UserId = "4"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            BookId = 16,
-                            DateReviewed = "2024-01-20",
-                            Description = "Praesentium aut cum id odit dignissimos non. Dolor qui et hic occaecati consequatur. Officiis sint maiores molestiae et perferendis.",
-                            Rating = 1,
-                            UserId = "1"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            BookId = 5,
-                            DateReviewed = "2024-03-11",
-                            Description = "Est sed in accusantium nisi voluptatem dolor temporibus in. Repudiandae autem qui qui sed laudantium. Eius sit quo sequi quia quas non.",
-                            Rating = 5,
-                            UserId = "4"
-                        });
-                });
-
             modelBuilder.Entity("code_assessment_api.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -1203,91 +989,91 @@ namespace code_assessment_api.Data.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "46631cfa-46a4-4cc6-9841-b686d09ecb8d",
+                            ConcurrencyStamp = "214f01d3-2c73-4ee0-975b-03e2709be093",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "Francis_VonRueden@gmail.com",
+                            Email = "Pearl39@hotmail.com",
                             EmailConfirmed = false,
-                            First = "Francis",
-                            Last = "VonRueden",
+                            First = "Pearl",
+                            Last = "Kuphal",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
                             ProfileAvatarId = 8,
-                            SecurityStamp = "4544cc07-bc95-4ea5-9766-780ae48bd8bb",
+                            SecurityStamp = "f821d599-b1d9-41aa-9c68-cb2d4087d625",
                             TwoFactorEnabled = false,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserName = "Francis32"
+                            UserName = "Pearl.Kuphal"
                         },
                         new
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "52bf440a-e0ee-4573-af50-f802cf4d8edc",
+                            ConcurrencyStamp = "1e337f6a-c155-4e53-b040-7293a7b010e7",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "Dianna_Rice31@hotmail.com",
+                            Email = "Joanna_Metz@gmail.com",
                             EmailConfirmed = false,
-                            First = "Dianna",
-                            Last = "Rice",
+                            First = "Joanna",
+                            Last = "Metz",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            ProfileAvatarId = 24,
-                            SecurityStamp = "4cedcc3b-cb88-44c4-ab7f-e712bf595db7",
+                            ProfileAvatarId = 27,
+                            SecurityStamp = "7cea8a00-a024-4c78-a1f4-16b20b5feefc",
                             TwoFactorEnabled = false,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserName = "Dianna74"
+                            UserName = "Joanna_Metz"
                         },
                         new
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2be24c8f-ebb0-41fa-abc0-c207f1fe7f5a",
+                            ConcurrencyStamp = "36e144b2-5106-4a79-a2f4-ba15e18f089d",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "Jane33@hotmail.com",
+                            Email = "Mamie24@yahoo.com",
                             EmailConfirmed = false,
-                            First = "Jane",
-                            Last = "Schaden",
+                            First = "Mamie",
+                            Last = "Walker",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            ProfileAvatarId = 1,
-                            SecurityStamp = "7e9880fc-b001-4ca9-98e4-a50b7592a380",
+                            ProfileAvatarId = 19,
+                            SecurityStamp = "1e3e845d-9661-40ab-872a-509eaa4a5325",
                             TwoFactorEnabled = false,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserName = "Jane_Schaden50"
+                            UserName = "Mamie64"
                         },
                         new
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f8837887-4ed0-4f98-8d40-0892c3f682dc",
+                            ConcurrencyStamp = "8db46be3-0efa-4279-960d-e6e7a1c9bba2",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "Renee51@gmail.com",
+                            Email = "Vera52@gmail.com",
                             EmailConfirmed = false,
-                            First = "Renee",
-                            Last = "Volkman",
+                            First = "Vera",
+                            Last = "Huel",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            ProfileAvatarId = 21,
-                            SecurityStamp = "b7e98fe8-0c34-42ee-b49b-33a9c6d806d3",
+                            ProfileAvatarId = 30,
+                            SecurityStamp = "04e6db43-d562-43b0-ba6b-478a573506d3",
                             TwoFactorEnabled = false,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserName = "Renee4"
+                            UserName = "Vera_Huel41"
                         },
                         new
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "12b77618-8d3f-44dd-ad95-8215e05d87fd",
+                            ConcurrencyStamp = "3ebe62ce-b276-4379-96db-277c74a819b8",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "Anthony_Gerhold@yahoo.com",
+                            Email = "Crystal_Lakin7@gmail.com",
                             EmailConfirmed = false,
-                            First = "Anthony",
-                            Last = "Gerhold",
+                            First = "Crystal",
+                            Last = "Lakin",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            ProfileAvatarId = 20,
-                            SecurityStamp = "88b1086c-4605-404b-a68d-60bb93b98df8",
+                            ProfileAvatarId = 18,
+                            SecurityStamp = "6cd2a630-5e67-4060-89a9-a1d807b0e6c6",
                             TwoFactorEnabled = false,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserName = "Anthony28"
+                            UserName = "Crystal55"
                         });
                 });
 
@@ -1506,25 +1292,6 @@ namespace code_assessment_api.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("code_assessment_api.Models.Review", b =>
-                {
-                    b.HasOne("code_assessment_api.Models.Book", "Book")
-                        .WithMany("Reviews")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("code_assessment_api.Models.User", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("code_assessment_api.Models.User", b =>
                 {
                     b.HasOne("code_assessment_api.Models.ProfileAvatar", "ProfileAvatar")
@@ -1557,8 +1324,6 @@ namespace code_assessment_api.Data.Migrations
                 {
                     b.Navigation("Favorites");
 
-                    b.Navigation("Reviews");
-
                     b.Navigation("Transactions");
                 });
 
@@ -1575,8 +1340,6 @@ namespace code_assessment_api.Data.Migrations
             modelBuilder.Entity("code_assessment_api.Models.User", b =>
                 {
                     b.Navigation("Favorites");
-
-                    b.Navigation("Reviews");
 
                     b.Navigation("Transactions");
                 });

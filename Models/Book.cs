@@ -11,7 +11,7 @@ public class Book {
 
     public ICollection<BookTransaction> Transactions { get; } = new List<BookTransaction>();
     public ICollection<UserFavoritesBook> Favorites { get; } = new List<UserFavoritesBook>();
-
+    public ICollection<Review> Reviews { get; set; } = new List<Review>();
     public int Year { get; set; }
     public int Pages { get; set; }
     public string Publisher { get; set; } = string.Empty;
@@ -21,12 +21,7 @@ public class Book {
     public string? Image { get; set; } = string.Empty;
 
     public bool IsBestSeller { get; set; }
-    public bool IsNewArrival { get; set; }
     public bool IsFeatured { get; set; }
-    public bool IsDeleted { get; set; }
-
-    // public List<Review> Reviews { get; set; } = new();
-
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public DateTime? DeletedAt { get; set; }

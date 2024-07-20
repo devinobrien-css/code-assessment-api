@@ -31,6 +31,8 @@ public class GetBooksResponse
     public GetBooksGenreResponse Genre { get; set; } = null!;
     public IEnumerable<GetBooksTransactionResponse> Transactions { get; set; } = null!;
     public IEnumerable<GetBooksFavoritesResponse> Favorites { get; set; } = null!;
+    public IEnumerable<GetBookReviewResponse> Reviews { get; set; } = null!;
+    public double? AverageRating { get; set; }
     public bool IsAvailable { get; set; }
     public string? ExpectedReturnDate { get; set; } = string.Empty;
     public string Publisher { get; set; } = string.Empty;

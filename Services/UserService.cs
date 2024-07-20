@@ -10,10 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace code_assessment_api.Services
 {
-    public class UserService(ApplicationDbContext context, UserManager<User> userManager) : IUserService
+    public class UserService(ApplicationDbContext context) : IUserService
     {
-        private readonly UserManager<User> _identityManager = userManager;
-
         private readonly ApplicationDbContext _context = context;
 
         public async Task<IEnumerable<User>> GetUsersAsync()
@@ -41,8 +39,6 @@ namespace code_assessment_api.Services
         public async Task UpdateUserAsync(string userId, UpdateUserRequest newData)
         {
             var user = await _context.Users.FindAsync(userId);
-            
-            // _context.Entry(user).State = EntityState.Modified;
 
             if (user != null)
             {
@@ -112,6 +108,32 @@ namespace code_assessment_api.Services
             return await _context.UserFavoritesbooks
                 .Where(ufb => ufb.UserId == userId)
                 .Select(ufb => ufb.Book)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<UserTransactionResponse>> GetUserTransactionsAsync(string userId)
+        {
+            return await _context.BookTransactions
+                .Where(ut => ut.UserId == userId)
+                .Select(ut => new UserTransactionResponse
+                {
+                    Id = ut.Id,
+                    Book = ut.Book,
+                    CheckOutTime = ut.CheckOutTime,
+                    DueTime = ut.DueTime,
+                    CheckedOutBy = new TransactionUserResponse {
+                        Id = ut.CheckedOutById ?? "",
+                        First = ut.CheckedOutBy!.First ?? "",
+                        Last = ut.CheckedOutBy!.Last ?? ""
+                    },
+                    CheckedInBy = new TransactionUserResponse {
+                        Id = ut.CheckedInById ?? "",
+                        First = ut.CheckedInBy!.First ?? "",
+                        Last = ut.CheckedInBy!.Last ?? ""
+                    },
+                    IsCheckedIn = ut.CheckedInById != null,
+                    IsOverdue = ut.DueTime < DateTime.Now && ut.CheckedInById == null
+                }).OrderByDescending(ut => ut.DueTime)
                 .ToListAsync();
         }
     }

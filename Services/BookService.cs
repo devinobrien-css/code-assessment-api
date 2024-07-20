@@ -16,6 +16,12 @@ namespace code_assessment_api.Services
                 b => b.Genre
             )
             .Include(
+                b => b.Reviews
+            )
+            .ThenInclude(
+                r => r.User
+            )
+            .Include(
                 b => b.Favorites
             )
             .Include(
@@ -43,6 +49,28 @@ namespace code_assessment_api.Services
                             CheckedInById = t.CheckedInById,
                         }
                     ),
+                    Reviews = b.Reviews.Select(
+                        r => new GetBookReviewResponse
+                        {
+                            Id = r.Id,
+                            Rating = r.Rating,
+                            Description = r.Description,
+                            DateReviewed = r.DateReviewed,
+                            Reviewer = new GetBookReviewUserResponse
+                            {
+                                Id = r.User.Id,
+                                First = r.User.First,
+                                Last = r.User.Last,
+                                Email = r.User.Email ?? "",
+                                ProfileAvatar = r.User.ProfileAvatar.Url,
+                            }
+                        }
+                    ).OrderBy(
+                        r => r.DateReviewed
+                    ),
+                    AverageRating = b.Reviews.Average(
+                        r => r.Rating
+                    ),
                     Favorites = b.Favorites.Select(
                         f => new GetBooksFavoritesResponse
                         {
@@ -62,9 +90,8 @@ namespace code_assessment_api.Services
                     Year = b.Year,
                     Pages = b.Pages,
                     IsBestSeller = b.IsBestSeller,
-                    IsNewArrival = b.IsNewArrival,
                     IsFeatured = b.IsFeatured,
-                    IsDeleted = b.IsDeleted,
+                    IsNewArrival = b.CreatedAt.Date >= DateTime.Now - TimeSpan.FromDays(28),
                 }
             )
             .ToListAsync();
@@ -72,9 +99,59 @@ namespace code_assessment_api.Services
             return books;
         }
 
-        public async Task<Book?> GetBookAsync(int id)
+        public async Task<GetBookResponse?> GetBookAsync(int id)
         {
-            var user = await _context.Books.FindAsync(id);
+            var user = await _context.Books.Include(
+                b => b.Genre
+            ).Include(
+                b => b.Reviews
+            )
+            .Select(
+                b => new GetBookResponse
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Author = b.Author,
+                    Description = b.Description,
+                    Image = b.Image,
+                    Genre = new GetBookGenreResponse
+                    {
+                        Id = b.Genre.Id,
+                        Name = b.Genre.Name,
+                    },
+                    Reviews = b.Reviews.Select(
+                        r => new GetBookReviewResponse
+                        {
+                            Id = r.Id,
+                            Rating = r.Rating,
+                            Description = r.Description,
+                            DateReviewed = r.DateReviewed,
+                            Reviewer = new GetBookReviewUserResponse
+                            {
+                                Id = r.User.Id,
+                                First = r.User.First,
+                                Last = r.User.Last,
+                                Email = r.User.Email ?? "",
+                                ProfileAvatar = r.User.ProfileAvatar.Url,
+                            }
+                        }
+                    ).OrderBy(
+                        r => r.DateReviewed
+                    ),
+                    AverageRating = b.Reviews.Average(
+                        r => r.Rating
+                    ),
+                    Publisher = b.Publisher,
+                    ISBN = b.ISBN,
+                    Year = b.Year,
+                    Pages = b.Pages,
+                    IsBestSeller = b.IsBestSeller,
+                    IsFeatured = b.IsFeatured,
+                    IsNewArrival = b.CreatedAt.Date >= DateTime.Now - TimeSpan.FromDays(28),
+                }
+            ).SingleOrDefaultAsync(
+                b => b.Id == id
+            );
 
             if (user == null)
             {
@@ -89,25 +166,37 @@ namespace code_assessment_api.Services
             return _context.Books.Any(e => e.Id == id);
         }
 
-        public async Task<Book?> UpdateBookAsync(Book book)
+        public async Task<Book?> UpdateBookAsync(int bookId, PatchBookRequest book)
         {
-            _context.Entry(book).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
+            var bookToUpdate = await _context.Books.FindAsync(bookId);
+            if(bookToUpdate == null)
             {
                 return null;
             }
 
-            return book;
+            bookToUpdate.Title = book.Title;
+            bookToUpdate.Author = book.Author;
+            bookToUpdate.Publisher = book.Publisher;
+            bookToUpdate.ISBN = book.ISBN;
+            bookToUpdate.Year = book.Year;
+            bookToUpdate.Pages = book.Pages;
+            bookToUpdate.GenreId = book.GenreId;
+            bookToUpdate.Description = book.Description;
+            bookToUpdate.Image = book.Image;
+            bookToUpdate.IsBestSeller = book.IsBestSeller;
+            bookToUpdate.IsFeatured = book.IsFeatured;
+            bookToUpdate.UpdatedAt = DateTime.Now;
+            
+            var res = await _context.SaveChangesAsync();
+
+            Console.WriteLine("===================");
+            Console.WriteLine("Result: " + res);
+
+            return bookToUpdate;
         }
 
         public async Task AddBookAsync(PostBookRequest book)
         {
-            Console.WriteLine("IN SERVICE AddBookAsync");
             _context.Books.Add(new Book{
                 Title = book.Title,
                 Author = book.Author,
@@ -119,9 +208,9 @@ namespace code_assessment_api.Services
                 Description = book.Description,
                 Image = book.Image,
                 IsBestSeller = book.IsBestSeller,
+                CreatedAt = DateTime.Now,
             });
-            var res = await _context.SaveChangesAsync();
-            Console.WriteLine("RES: " + res);
+            await _context.SaveChangesAsync();
         }
         
         public async Task DeleteBookAsync(Book book)

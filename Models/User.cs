@@ -11,6 +11,7 @@ public class User : IdentityUser
     public ProfileAvatar ProfileAvatar { get; set; } = null!;
     public ICollection<BookTransaction> Transactions { get; } = new List<BookTransaction>();
     public ICollection<UserFavoritesBook> Favorites { get; } = new List<UserFavoritesBook>();
+    public ICollection<Review> Reviews { get; set; } = new List<Review>();
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public DateTime? DeletedAt { get; set; }

@@ -12,7 +12,7 @@ namespace code_assessment_api.Data {
         public DbSet<Genre> Genres { get; set; } = default!;
         public DbSet<BookTransaction> BookTransactions { get; set; } = default!;
         public DbSet<UserFavoritesBook> UserFavoritesbooks { get; set; } = default!;
-
+        public DbSet<Review> Reviews { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -67,6 +67,16 @@ namespace code_assessment_api.Data {
                 .WithOne(t => t.User)
                 .HasForeignKey(t => t.UserId);
 
+            builder.Entity<User>()
+                .HasMany(u => u.Reviews)
+                .WithOne(t => t.User)
+                .HasForeignKey(t => t.UserId);
+
+            builder.Entity<Book>()
+                .HasMany(b => b.Reviews)
+                .WithOne(t => t.Book)
+                .HasForeignKey(t => t.BookId);
+
             var fakeBookImageIds = new List<string>([
                 "https://drive.google.com/thumbnail?id=1zycl7EiCECK541ialA9UCrs9HdfddUQb&sz=w1000",
                 "https://drive.google.com/thumbnail?id=1C4sRKzQrFUDNQ1X12WVeKbX0knOoC6tA&sz=w1000",
@@ -99,6 +109,8 @@ namespace code_assessment_api.Data {
                 .RuleFor(b => b.ISBN, f => f.Random.Guid().ToString())
                 .RuleFor(b => b.Year, f => f.Date.Past().Year)
                 .RuleFor(b => b.Pages, f => f.Random.Number(100, 500))
+                .RuleFor(b => b.IsBestSeller, f => f.Random.Bool())
+                .RuleFor(b => b.IsFeatured, f => f.Random.Bool())
                 .Generate(20);
 
             books.ForEach((b) =>
@@ -151,6 +163,23 @@ namespace code_assessment_api.Data {
                 new UserFavoritesBook() { Id=15, UserId = "3", BookId = 4 },
                 new UserFavoritesBook() { Id=16, UserId = "3", BookId = 5 }
             );
+            #endregion
+
+            var reviews = new Faker<Review>()
+                .RuleFor(r => r.Rating, f => f.Random.Number(1, 5))
+                .RuleFor(r => r.Description, f => f.Lorem.Paragraph())
+                .RuleFor(r => r.UserId, f => f.Random.Number(1, 4).ToString())
+                .RuleFor(r => r.BookId, f => f.Random.Number(1, 20))
+                .RuleFor(r => r.DateReviewed, f => f.Date.Past().ToString("yyyy-MM-dd"))
+                .Generate(20);
+
+            reviews.ForEach((r) =>
+            {
+                r.Id = reviews.IndexOf(r) + 1;
+            });
+
+            #region ReviewSeed
+            builder.Entity<Review>().HasData(reviews);
             #endregion
 
             base.OnModelCreating(builder);

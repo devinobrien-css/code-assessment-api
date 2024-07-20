@@ -6,6 +6,7 @@ using code_assessment_api.Data;
 using Microsoft.AspNetCore.Identity;
 using NuGet.Protocol;
 using code_assessment_api.ViewModels.Requests;
+using code_assessment_api.ViewModels.Responses;
 
 namespace code_assessment_api.Controllers
 {
@@ -15,7 +16,7 @@ namespace code_assessment_api.Controllers
     public class UserController(ApplicationDbContext context, UserManager<User> userManager) : ControllerBase
     {
         private readonly UserManager<User> _identityManager = userManager;
-        private readonly UserService _userService = new(context, userManager);
+        private readonly UserService _userService = new(context);
         private readonly BookService _bookService = new(context);
 
         // GET: api/User
@@ -181,6 +182,25 @@ namespace code_assessment_api.Controllers
             await _userService.DeleteUserAsync(user);
 
             return NoContent();
+        }
+
+        // GET: api/User/5/transactions
+        [HttpGet("{id}/transactions")]
+        public async Task<IActionResult> GetUserTransactions(string id)
+        {
+            var user = await _identityManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            else if (user.Id != id)
+            {
+                return Unauthorized();
+            }
+
+            var transactions = await _userService.GetUserTransactionsAsync(id);
+
+            return Ok(transactions);
         }
     }
 }

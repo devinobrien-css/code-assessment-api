@@ -10,6 +10,22 @@ public class GetBookGenreResponse {
 
 }
 
+public class GetBookReviewUserResponse {
+    public string Id { get; set; } = string.Empty;
+    public string First { get; set; } = string.Empty;
+    public string Last { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string ProfileAvatar { get; set; } = string.Empty;
+}
+
+public class GetBookReviewResponse {
+    public int Id { get; set; }
+    public int Rating { get; set; }
+    public string Description { get; set; } = string.Empty;
+    public string DateReviewed { get; set; } = string.Empty;
+    public GetBookReviewUserResponse Reviewer { get; set; } = null!;
+}
+
 public class GetBookTransactionResponse {
     public string UserId { get; set; } = string.Empty;
     public string? CheckedInById { get; set; } = string.Empty;
@@ -25,6 +41,8 @@ public class GetBookResponse
     public int Year { get; set; }
     public GetBookGenreResponse Genre { get; set; } = null!;
     public IEnumerable<GetBookTransactionResponse> Transactions { get; set; } = null!;
+    public IEnumerable<GetBookReviewResponse> Reviews { get; set; } = null!;
+    public double? AverageRating { get; set; }
     public bool IsAvailable { get; set; }
     public string? ExpectedReturnDate { get; set; } = string.Empty;
     public string Publisher { get; set; } = string.Empty;

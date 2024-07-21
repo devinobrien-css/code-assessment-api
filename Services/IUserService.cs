@@ -1,5 +1,6 @@
 using code_assessment_api.Models;
 using code_assessment_api.ViewModels.Requests;
+using code_assessment_api.ViewModels.Responses;
 
 namespace code_assessment_api.Services {
     public interface IUserService
@@ -14,7 +15,7 @@ namespace code_assessment_api.Services {
         public Task SetProfileAvatarsAsync(int avatarId, string userId);
         public Task UserFavoritesBookAsync(int bookId, string userId);
         public Task UserUnfavoritesBookAsync(int bookId, string userId);
-        public  Task<IEnumerable<Book>> GetUserFavoriteBooksAsync(string userId);
+        public  Task<IEnumerable<GetUserFavoritesResponse>> GetUserFavoriteBooksAsync(string userId);
     }
 
 }

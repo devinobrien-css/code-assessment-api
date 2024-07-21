@@ -105,7 +105,7 @@ namespace code_assessment_api.Controllers
 
         // GET: api/User/5/favorite
         [HttpGet("{userId}/favorite")]
-        public async Task<IEnumerable<Book>> GetUserFavoriteBooks(string userId)
+        public async Task<IEnumerable<GetUserFavoritesResponse>> GetUserFavoriteBooks(string userId)
         {
             return await _userService.GetUserFavoriteBooksAsync(userId);
         }

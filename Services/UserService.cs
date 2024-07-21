@@ -101,11 +101,23 @@ namespace code_assessment_api.Services
             }
         }
 
-        public async Task<IEnumerable<Book>> GetUserFavoriteBooksAsync(string userId)
+        public async Task<IEnumerable<GetUserFavoritesResponse>> GetUserFavoriteBooksAsync(string userId)
         {
             return await _context.UserFavoritesbooks
                 .Where(ufb => ufb.UserId == userId)
-                .Select(ufb => ufb.Book)
+                .Include(ufb => ufb.Book)
+                .ThenInclude(b => b.Transactions)
+                .Select(
+                    ufb => new GetUserFavoritesResponse
+                    {
+                        Id = ufb.Book.Id,
+                        Title = ufb.Book.Title,
+                        Author = ufb.Book.Author,
+                        Image = ufb.Book.Image,
+                        IsAvailable = ufb.Book.Transactions.All(t => t.CheckedInById != null),
+                        ExpectedReturnDate = ufb.Book.Transactions.Where(t => t.CheckedInById == null).Select(t => t.DueTime).FirstOrDefault().ToString(),
+                    }
+                )
                 .ToListAsync();
         }
 

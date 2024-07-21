@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("code-assessment-api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74ccb0e0a4c9b151e6b61fff08e2759655d0c476")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7666c59e8f352bf119d666cd772fcc8610e2df1f")]
 [assembly: System.Reflection.AssemblyProductAttribute("code-assessment-api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("code-assessment-api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

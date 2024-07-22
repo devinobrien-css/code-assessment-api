@@ -21,7 +21,7 @@ namespace code_assessment_api.Controllers
 
         // GET: api/Book
         [HttpGet]
-        public async Task<ActionResult<List<GetBooksResponse>>> GetBooks()
+        public async Task<ActionResult<List<GetBookResponse>>> GetBooks()
         {
             var books = await _bookService.GetBooksAsync();
             return Ok(books);
@@ -82,6 +82,7 @@ namespace code_assessment_api.Controllers
 
         // POST: api/Book/{id}/review
         [HttpPost("{id}/review")]
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> PostReview(int id, PostReviewRequest review)
         {
             var book = await _context.Books.FindAsync(id);

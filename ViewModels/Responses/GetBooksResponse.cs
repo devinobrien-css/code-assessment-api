@@ -4,25 +4,25 @@ using code_assessment_api.Models;
 namespace code_assessment_api.ViewModels.Responses;
 
 
-public class GetBooksGenreResponse
+public class GetBookGenreResponse
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
 
 }
 
-public class GetBooksTransactionResponse
+public class GetBookTransactionResponse
 {
     public string UserId { get; set; } = string.Empty;
     public string? CheckedInById { get; set; } = string.Empty;
 }
 
-public class GetBooksFavoritesResponse
+public class GetBookFavoritesResponse
 {
     public string UserId { get; set; } = string.Empty;
 }
 
-public class GetBooksResponse
+public class GetBookResponse
 {
     public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
@@ -30,10 +30,10 @@ public class GetBooksResponse
     public string? Description { get; set; } = string.Empty;
     public string? Image { get; set; } = string.Empty;
     public int Year { get; set; }
-    public GetBooksGenreResponse Genre { get; set; } = null!;
-    public IEnumerable<GetBooksTransactionResponse> Transactions { get; set; } = null!;
-    public IEnumerable<GetBooksFavoritesResponse> Favorites { get; set; } = null!;
-    public IEnumerable<GetBookReviewResponse> Reviews { get; set; } = null!;
+    public GetBookGenreResponse Genre { get; set; } = null!;
+    public IEnumerable<GetBookTransactionResponse>? Transactions { get; set; } = null!;
+    public IEnumerable<GetBookFavoritesResponse>? Favorites { get; set; } = null!;
+    public IEnumerable<GetReviewResponse>? Reviews { get; set; } = null!;
     public double? AverageRating { get; set; }
     public bool IsAvailable { get; set; }
     public string? ExpectedReturnDate { get; set; } = string.Empty;

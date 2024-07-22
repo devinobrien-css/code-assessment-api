@@ -10,7 +10,7 @@ namespace code_assessment_api.Services
     {
         private readonly ApplicationDbContext _context = context;
 
-        public async Task<List<GetBooksResponse>> GetBooksAsync()
+        public async Task<List<GetBookResponse>> GetBooksAsync()
         {
             var books = await _context.Books.Include(
                 b => b.Genre
@@ -31,39 +31,39 @@ namespace code_assessment_api.Services
                 t => t.User
             )
             .Select(
-                b => new GetBooksResponse
+                b => new GetBookResponse
                 {
                     Id = b.Id,
                     Title = b.Title,
                     Author = b.Author,
                     Description = b.Description,
                     Image = b.Image,
-                    Genre = new GetBooksGenreResponse
+                    Genre = new GetBookGenreResponse
                     {
                         Id = b.Genre.Id,
                         Name = b.Genre.Name,
                     },
                     Transactions = b.Transactions.Select(
-                        t => new GetBooksTransactionResponse
+                        t => new GetBookTransactionResponse
                         {
                             UserId = t.UserId,
                             CheckedInById = t.CheckedInById,
                         }
                     ),
                     Reviews = b.Reviews.Select(
-                        r => new GetBookReviewResponse
+                        r => new GetReviewResponse
                         {
                             Id = r.Id,
                             Rating = r.Rating,
                             Description = r.Description,
                             DateReviewed = r.DateReviewed,
-                            Reviewer = r.User.ProfileAvatar == null ? null : new GetBookReviewUserResponse
+                            Reviewer =  new UserReviewResponse
                             {
                                 Id = r.User.Id,
                                 First = r.User.First,
                                 Last = r.User.Last,
                                 Email = r.User.Email ?? "",
-                                ProfileAvatar = r.User.ProfileAvatar.Url,
+                                ProfileAvatar = r.User.ProfileAvatar == null ? null : r.User.ProfileAvatar.Url,
                             }
                         }
                     ).OrderByDescending(
@@ -73,7 +73,7 @@ namespace code_assessment_api.Services
                         r => r.Rating
                     ),
                     Favorites = b.Favorites.Select(
-                        f => new GetBooksFavoritesResponse
+                        f => new GetBookFavoritesResponse
                         {
                             UserId = f.UserId,
                         }
@@ -102,10 +102,23 @@ namespace code_assessment_api.Services
 
         public async Task<GetBookResponse?> GetBookAsync(int id)
         {
-            var user = await _context.Books.Include(
+            var book = await _context.Books.Include(
                 b => b.Genre
-            ).Include(
+            )
+            .Include(
                 b => b.Reviews
+            )
+            .ThenInclude(
+                r => r.User
+            )
+            .Include(
+                b => b.Favorites
+            )
+            .Include(
+                b => b.Transactions
+            )
+            .ThenInclude(
+                t => t.User
             )
             .Select(
                 b => new GetBookResponse
@@ -120,20 +133,27 @@ namespace code_assessment_api.Services
                         Id = b.Genre.Id,
                         Name = b.Genre.Name,
                     },
+                    Transactions = b.Transactions.Select(
+                        t => new GetBookTransactionResponse
+                        {
+                            UserId = t.UserId,
+                            CheckedInById = t.CheckedInById,
+                        }
+                    ),
                     Reviews = b.Reviews.Select(
-                        r => new GetBookReviewResponse
+                        r => new GetReviewResponse
                         {
                             Id = r.Id,
                             Rating = r.Rating,
                             Description = r.Description,
                             DateReviewed = r.DateReviewed,
-                            Reviewer = r.User.ProfileAvatar == null ? null : new GetBookReviewUserResponse
+                            Reviewer =  new UserReviewResponse
                             {
                                 Id = r.User.Id,
                                 First = r.User.First,
                                 Last = r.User.Last,
                                 Email = r.User.Email ?? "",
-                                ProfileAvatar = r.User.ProfileAvatar.Url,
+                                ProfileAvatar = r.User.ProfileAvatar == null ? "" : r.User.ProfileAvatar.Url,
                             }
                         }
                     ).OrderByDescending(
@@ -142,6 +162,20 @@ namespace code_assessment_api.Services
                     AverageRating = b.Reviews.Average(
                         r => r.Rating
                     ),
+                    Favorites = b.Favorites.Select(
+                        f => new GetBookFavoritesResponse
+                        {
+                            UserId = f.UserId,
+                        }
+                    ),
+                    IsAvailable = b.Transactions.All(
+                        t => t.CheckedInById != null
+                    ),
+                    ExpectedReturnDate = b.Transactions.Where(
+                        t => t.CheckedInById == null
+                    ).Select(
+                        t => t.DueTime
+                    ).FirstOrDefault().ToString(),
                     Publisher = b.Publisher,
                     ISBN = b.ISBN,
                     Year = b.Year,
@@ -154,12 +188,12 @@ namespace code_assessment_api.Services
                 b => b.Id == id
             );
 
-            if (user == null)
+            if (book == null)
             {
                 return null;
             }
 
-            return user;
+            return book;
         }
 
         public bool BookExists(int id)

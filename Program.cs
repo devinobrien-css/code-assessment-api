@@ -65,7 +65,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddHealthChecks()
-    .AddSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    .AddSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ?? "Server=localhost, 1433; User Id=sa; Password=YourStrong@Passw0rd; TrustServerCertificate=True;");
 
 /*
     Authentication and Authorization

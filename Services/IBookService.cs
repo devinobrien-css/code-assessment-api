@@ -7,7 +7,7 @@ namespace code_assessment_api.Services
 {
     public interface IBookService
     {
-        Task<List<GetBooksResponse>> GetBooksAsync();
+        Task<List<GetBookResponse>> GetBooksAsync();
         Task<GetBookResponse?> GetBookAsync(int id);
         Task<Book?> UpdateBookAsync(int bookId, PatchBookRequest book);
         Task AddBookAsync(PostBookRequest book);

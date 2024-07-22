@@ -48,6 +48,13 @@ public class AccountController(ApplicationDbContext context, UserManager<User> u
         return BadRequest(result.Errors);
     }
 
+    [HttpGet("email-exists")]
+    public async Task<IActionResult> EmailExists(string email)
+    {
+        var user = await _identityManager.FindByEmailAsync(email);
+        return Ok(new { exists = user != null });
+    }
+
     [Authorize]
     [HttpGet("current-user")]
     public async Task<IActionResult> GetUserInfo()

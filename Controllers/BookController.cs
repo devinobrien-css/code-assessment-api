@@ -31,7 +31,7 @@ namespace code_assessment_api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Book>> GetBook(int id)
         {
-            if(!BookExists(id))
+            if (!BookExists(id))
             {
                 return NotFound();
             }
@@ -53,7 +53,7 @@ namespace code_assessment_api.Controllers
         [HttpPost]
         [Authorize(Roles = "Employee")]
         public async Task<ActionResult<Book>> PostBook(PostBookRequest book)
-        {   
+        {
             await _bookService.AddBookAsync(book);
             return NoContent();
         }
@@ -95,7 +95,7 @@ namespace code_assessment_api.Controllers
                 Rating = review.Rating,
                 Description = review.Description,
                 UserId = review.UserId,
-                DateReviewed = DateTime.Now.ToString("yyyy-MM-dd"),
+                DateReviewed = DateTime.Now.ToString(),
                 BookId = id
             };
 

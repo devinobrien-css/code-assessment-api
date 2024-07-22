@@ -9,7 +9,8 @@ public class UserReviewResponse
     public string ProfileAvatar { get; set; } = string.Empty;
 }
 
-public class BookReviewResponse {
+public class BookReviewResponse
+{
     public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
 }

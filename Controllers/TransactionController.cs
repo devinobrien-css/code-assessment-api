@@ -51,7 +51,7 @@ namespace code_assessment_api.Controllers
         public async Task<IActionResult> GetUserTransaction(int id)
         {
             var transaction = await _transactionService.GetUserTransactionAsync(id);
-            if(transaction == null)
+            if (transaction == null)
             {
                 return NotFound();
             }

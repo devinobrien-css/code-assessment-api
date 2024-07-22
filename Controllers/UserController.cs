@@ -50,7 +50,7 @@ namespace code_assessment_api.Controllers
         public async Task<IActionResult> PatchUser(string id, UpdateUserRequest user)
         {
             var identityUser = await _identityManager.GetUserAsync(User);
-            if(identityUser == null)
+            if (identityUser == null)
             {
                 return NotFound("User not found");
             }
@@ -59,7 +59,7 @@ namespace code_assessment_api.Controllers
                 return BadRequest();
             }
 
-            if(!_userService.UserExists(id))
+            if (!_userService.UserExists(id))
             {
                 return NotFound();
             }
@@ -126,7 +126,7 @@ namespace code_assessment_api.Controllers
 
 
             var book = await _bookService.GetBookAsync(bookId);
-            if(book == null)
+            if (book == null)
             {
                 return NotFound("Book not found");
             }
@@ -151,7 +151,7 @@ namespace code_assessment_api.Controllers
             }
 
             var book = await _bookService.GetBookAsync(bookId);
-            if(book == null)
+            if (book == null)
             {
                 return NotFound("Book not found");
             }
@@ -168,7 +168,7 @@ namespace code_assessment_api.Controllers
         {
             var user = await _userService.GetUserAsync(id);
 
-            if(user == null)
+            if (user == null)
             {
                 return NotFound();
             }

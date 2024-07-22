@@ -3,7 +3,8 @@ using code_assessment_api.Services;
 using code_assessment_api.ViewModels.Requests;
 using code_assessment_api.ViewModels.Responses;
 
-namespace code_assessment_api.Services {
+namespace code_assessment_api.Services
+{
     public interface IBookService
     {
         Task<List<GetBooksResponse>> GetBooksAsync();

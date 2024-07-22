@@ -23,8 +23,9 @@ public class AccountController(ApplicationDbContext context, UserManager<User> u
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterAccountPayload model)
     {
-        var user = new User { 
-            UserName = model.Email, 
+        var user = new User
+        {
+            UserName = model.Email,
             Email = model.Email,
             First = model.First,
             Last = model.Last,
@@ -42,7 +43,7 @@ public class AccountController(ApplicationDbContext context, UserManager<User> u
             await _identityManager.AddToRoleAsync(user, role);
 
             return Ok(new { message = "User registered successfully" });
-        } 
+        }
 
         return BadRequest(result.Errors);
     }

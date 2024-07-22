@@ -5,7 +5,7 @@ using code_assessment_api.Data;
 using AspNetCore.Identity.Extensions;
 using Microsoft.OpenApi.Models;
 
-var  AllowSpecificOrigins = "_allowSpecificOrigins";
+var AllowSpecificOrigins = "_allowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -16,7 +16,7 @@ builder.Services.AddControllers();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: AllowSpecificOrigins,
-        policy  =>
+        policy =>
         {
             policy.WithOrigins("http://localhost:4200")
                 .AllowAnyHeader()
@@ -29,7 +29,7 @@ builder.Services.AddEndpointsApiExplorer();
 /*
     Swagger Configuration
 */
-builder.Services.AddSwaggerGen(options => 
+builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new() { Title = "Code Assessment API", Version = "v1" });
 
@@ -43,7 +43,7 @@ builder.Services.AddSwaggerGen(options =>
         BearerFormat = "JWT"
     });
 
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement 
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
             new OpenApiSecurityScheme

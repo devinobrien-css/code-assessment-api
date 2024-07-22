@@ -158,6 +158,12 @@ dotnet ef database update
 
 &nbsp;
 
+### Code formatting:
+
+```bash
+dotnet format code-assessment-api.sln
+```
+
 ## Documentation
 
 [Download Docker](https://www.docker.com/products/docker-desktop/)

@@ -38,7 +38,8 @@ namespace code_assessment_api.Services
                     Author = b.Author,
                     Description = b.Description,
                     Image = b.Image,
-                    Genre = new GetBooksGenreResponse{
+                    Genre = new GetBooksGenreResponse
+                    {
                         Id = b.Genre.Id,
                         Name = b.Genre.Name,
                     },
@@ -56,7 +57,7 @@ namespace code_assessment_api.Services
                             Rating = r.Rating,
                             Description = r.Description,
                             DateReviewed = r.DateReviewed,
-                            Reviewer = new GetBookReviewUserResponse
+                            Reviewer = r.User.ProfileAvatar == null ? null : new GetBookReviewUserResponse
                             {
                                 Id = r.User.Id,
                                 First = r.User.First,
@@ -65,7 +66,7 @@ namespace code_assessment_api.Services
                                 ProfileAvatar = r.User.ProfileAvatar.Url,
                             }
                         }
-                    ).OrderBy(
+                    ).OrderByDescending(
                         r => r.DateReviewed
                     ).ToList(),
                     AverageRating = b.Reviews.Average(
@@ -126,7 +127,7 @@ namespace code_assessment_api.Services
                             Rating = r.Rating,
                             Description = r.Description,
                             DateReviewed = r.DateReviewed,
-                            Reviewer = new GetBookReviewUserResponse
+                            Reviewer = r.User.ProfileAvatar == null ? null : new GetBookReviewUserResponse
                             {
                                 Id = r.User.Id,
                                 First = r.User.First,
@@ -135,7 +136,7 @@ namespace code_assessment_api.Services
                                 ProfileAvatar = r.User.ProfileAvatar.Url,
                             }
                         }
-                    ).OrderBy(
+                    ).OrderByDescending(
                         r => r.DateReviewed
                     ).ToList(),
                     AverageRating = b.Reviews.Average(
@@ -169,7 +170,7 @@ namespace code_assessment_api.Services
         public async Task<Book?> UpdateBookAsync(int bookId, PatchBookRequest book)
         {
             var bookToUpdate = await _context.Books.FindAsync(bookId);
-            if(bookToUpdate == null)
+            if (bookToUpdate == null)
             {
                 return null;
             }
@@ -186,7 +187,7 @@ namespace code_assessment_api.Services
             bookToUpdate.IsBestSeller = book.IsBestSeller;
             bookToUpdate.IsFeatured = book.IsFeatured;
             bookToUpdate.UpdatedAt = DateTime.Now;
-            
+
             var res = await _context.SaveChangesAsync();
 
             return bookToUpdate;
@@ -194,7 +195,8 @@ namespace code_assessment_api.Services
 
         public async Task AddBookAsync(PostBookRequest book)
         {
-            _context.Books.Add(new Book{
+            _context.Books.Add(new Book
+            {
                 Title = book.Title,
                 Author = book.Author,
                 Publisher = book.Publisher,
@@ -209,7 +211,7 @@ namespace code_assessment_api.Services
             });
             await _context.SaveChangesAsync();
         }
-        
+
         public async Task DeleteBookAsync(Book book)
         {
             _context.Books.Remove(book);

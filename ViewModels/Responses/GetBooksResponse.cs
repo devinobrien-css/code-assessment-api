@@ -4,18 +4,20 @@ using code_assessment_api.Models;
 namespace code_assessment_api.ViewModels.Responses;
 
 
-public class GetBooksGenreResponse {
+public class GetBooksGenreResponse
+{
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
 
 }
 
-public class GetBooksTransactionResponse {
+public class GetBooksTransactionResponse
+{
     public string UserId { get; set; } = string.Empty;
     public string? CheckedInById { get; set; } = string.Empty;
 }
 
-public class GetBooksFavoritesResponse 
+public class GetBooksFavoritesResponse
 {
     public string UserId { get; set; } = string.Empty;
 }

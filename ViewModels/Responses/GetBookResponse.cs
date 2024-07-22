@@ -4,29 +4,33 @@ using code_assessment_api.Models;
 namespace code_assessment_api.ViewModels.Responses;
 
 
-public class GetBookGenreResponse {
+public class GetBookGenreResponse
+{
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
 
 }
 
-public class GetBookReviewUserResponse {
+public class GetBookReviewUserResponse
+{
     public string Id { get; set; } = string.Empty;
     public string First { get; set; } = string.Empty;
     public string Last { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public string ProfileAvatar { get; set; } = string.Empty;
+    public string? ProfileAvatar { get; set; } = string.Empty;
 }
 
-public class GetBookReviewResponse {
+public class GetBookReviewResponse
+{
     public int Id { get; set; }
     public int Rating { get; set; }
     public string Description { get; set; } = string.Empty;
     public string DateReviewed { get; set; } = string.Empty;
-    public GetBookReviewUserResponse Reviewer { get; set; } = null!;
+    public GetBookReviewUserResponse? Reviewer { get; set; } = null!;
 }
 
-public class GetBookTransactionResponse {
+public class GetBookTransactionResponse
+{
     public string UserId { get; set; } = string.Empty;
     public string? CheckedInById { get; set; } = string.Empty;
 }

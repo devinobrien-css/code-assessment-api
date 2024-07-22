@@ -54,7 +54,7 @@ namespace code_assessment_api.Services
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
         }
-        
+
         public async Task DeleteUserAsync(User user)
         {
             _context.Users.Remove(user);
@@ -131,12 +131,14 @@ namespace code_assessment_api.Services
                     Book = ut.Book,
                     CheckOutTime = ut.CheckOutTime,
                     DueTime = ut.DueTime,
-                    CheckedOutBy = new TransactionUserResponse {
+                    CheckedOutBy = new TransactionUserResponse
+                    {
                         Id = ut.CheckedOutById ?? "",
                         First = ut.CheckedOutBy!.First ?? "",
                         Last = ut.CheckedOutBy!.Last ?? ""
                     },
-                    CheckedInBy = new TransactionUserResponse {
+                    CheckedInBy = new TransactionUserResponse
+                    {
                         Id = ut.CheckedInById ?? "",
                         First = ut.CheckedInBy!.First ?? "",
                         Last = ut.CheckedInBy!.Last ?? ""

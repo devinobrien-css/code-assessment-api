@@ -1,6 +1,7 @@
 namespace code_assessment_api.Models;
 
-public class ProfileAvatar {
+public class ProfileAvatar
+{
     public int Id { get; set; }
     public string Url { get; set; } = string.Empty;
 

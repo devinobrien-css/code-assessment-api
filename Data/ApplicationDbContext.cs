@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using code_assessment_api.Models;
 using Bogus;
 
-namespace code_assessment_api.Data {
+namespace code_assessment_api.Data
+{
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<User>(options)
     {
         public new DbSet<User> Users { get; set; } = default!;
@@ -37,7 +38,7 @@ namespace code_assessment_api.Data {
             var sampleUserIndex = 1;
             users.ForEach((u) =>
             {
-                u.Id = ""+sampleUserIndex++;
+                u.Id = "" + sampleUserIndex++;
             });
 
             #region UserSeed
@@ -99,7 +100,7 @@ namespace code_assessment_api.Data {
                 "https://drive.google.com/thumbnail?id=1iS1vCXQNst3Cm0hkq0m9m53HlFXB2e_b&sz=w1000",
                 "https://drive.google.com/thumbnail?id=1EsQ7X9KyU57dg3N3AjHn_xtUtauiElDF&sz=w1000",
             ]);
-            
+
             var books = new Faker<Book>()
                 .RuleFor(b => b.Title, f => f.Lorem.Sentence(3))
                 .RuleFor(b => b.Author, f => f.Name.FullName())
@@ -125,7 +126,7 @@ namespace code_assessment_api.Data {
 
             var bookTransactions = new Faker<BookTransaction>()
                 .RuleFor(t => t.CheckOutTime, DateTime.Now)
-                .RuleFor(t => t.DueTime, f =>  DateTime.Now + TimeSpan.FromDays(5))
+                .RuleFor(t => t.DueTime, f => DateTime.Now + TimeSpan.FromDays(5))
                 .RuleFor(t => t.BookId, f => f.Random.Number(1, 20))
                 .RuleFor(t => t.UserId, f => f.Random.Number(1, 4).ToString())
                 .RuleFor(t => t.CheckedOutById, "5")
@@ -144,24 +145,24 @@ namespace code_assessment_api.Data {
 
             #region FavoritedBooksSeed
             builder.Entity<UserFavoritesBook>().HasData(
-                new UserFavoritesBook() { Id=1, UserId = "1", BookId = 1 },
-                new UserFavoritesBook() { Id=2, UserId = "1", BookId = 2 },
-                new UserFavoritesBook() { Id=3, UserId = "1", BookId = 3 },
-                new UserFavoritesBook() { Id=4, UserId = "1", BookId = 4 },
-                new UserFavoritesBook() { Id=5, UserId = "1", BookId = 5 },
+                new UserFavoritesBook() { Id = 1, UserId = "1", BookId = 1 },
+                new UserFavoritesBook() { Id = 2, UserId = "1", BookId = 2 },
+                new UserFavoritesBook() { Id = 3, UserId = "1", BookId = 3 },
+                new UserFavoritesBook() { Id = 4, UserId = "1", BookId = 4 },
+                new UserFavoritesBook() { Id = 5, UserId = "1", BookId = 5 },
 
-                new UserFavoritesBook() { Id=6, UserId = "2", BookId = 4 },
-                new UserFavoritesBook() { Id=7, UserId = "2", BookId = 5 },
-                new UserFavoritesBook() { Id=8, UserId = "2", BookId = 6 },
-                new UserFavoritesBook() { Id=9, UserId = "2", BookId = 7 },
-                new UserFavoritesBook() { Id=10, UserId = "2", BookId = 8 },
-                new UserFavoritesBook() { Id=11, UserId = "2", BookId = 9 },
+                new UserFavoritesBook() { Id = 6, UserId = "2", BookId = 4 },
+                new UserFavoritesBook() { Id = 7, UserId = "2", BookId = 5 },
+                new UserFavoritesBook() { Id = 8, UserId = "2", BookId = 6 },
+                new UserFavoritesBook() { Id = 9, UserId = "2", BookId = 7 },
+                new UserFavoritesBook() { Id = 10, UserId = "2", BookId = 8 },
+                new UserFavoritesBook() { Id = 11, UserId = "2", BookId = 9 },
 
-                new UserFavoritesBook() { Id=12, UserId = "3", BookId = 1 },
-                new UserFavoritesBook() { Id=13, UserId = "3", BookId = 2 },
-                new UserFavoritesBook() { Id=14, UserId = "3", BookId = 3 },
-                new UserFavoritesBook() { Id=15, UserId = "3", BookId = 4 },
-                new UserFavoritesBook() { Id=16, UserId = "3", BookId = 5 }
+                new UserFavoritesBook() { Id = 12, UserId = "3", BookId = 1 },
+                new UserFavoritesBook() { Id = 13, UserId = "3", BookId = 2 },
+                new UserFavoritesBook() { Id = 14, UserId = "3", BookId = 3 },
+                new UserFavoritesBook() { Id = 15, UserId = "3", BookId = 4 },
+                new UserFavoritesBook() { Id = 16, UserId = "3", BookId = 5 }
             );
             #endregion
 

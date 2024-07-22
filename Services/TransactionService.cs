@@ -46,36 +46,37 @@ namespace code_assessment_api.Services
                 .Include(t => t.CheckedOutBy)
                 .Include(t => t.CheckedInBy)
                 .Select(t => new UserTransactionResponse
-            {
-                Id = t.Id,
-                User = new TransactionUserResponse {
-                    Id = t.User.Id,
-                    First = t.User.First,
-                    Last = t.User.Last,
-                    Email = t.User.Email ?? ""
-                
-                },
-                Book = t.Book,
-                CheckOutTime = t.CheckOutTime,
-                CheckInTime = t.CheckInTime,
-                DueTime = t.DueTime,
-                CheckedOutBy = t.CheckedOutBy == null ? null : new TransactionUserResponse
                 {
-                    Id = t.CheckedOutBy.Id,
-                    First = t.CheckedOutBy.First,
-                    Last = t.CheckedOutBy.Last,
-                    Email = t.CheckedOutBy.Email ?? ""
-                },
-                CheckedInBy = t.CheckedInBy == null ? null : new TransactionUserResponse
-                {
-                    Id = t.CheckedInBy.Id,
-                    First = t.CheckedInBy.First,
-                    Last = t.CheckedInBy.Last,
-                    Email = t.CheckedInBy.Email ?? ""
-                },
-                IsCheckedIn = t.CheckedInById != null,
-                IsOverdue = t.DueTime < DateTime.Now
-            }).OrderBy(
+                    Id = t.Id,
+                    User = new TransactionUserResponse
+                    {
+                        Id = t.User.Id,
+                        First = t.User.First,
+                        Last = t.User.Last,
+                        Email = t.User.Email ?? ""
+
+                    },
+                    Book = t.Book,
+                    CheckOutTime = t.CheckOutTime,
+                    CheckInTime = t.CheckInTime,
+                    DueTime = t.DueTime,
+                    CheckedOutBy = t.CheckedOutBy == null ? null : new TransactionUserResponse
+                    {
+                        Id = t.CheckedOutBy.Id,
+                        First = t.CheckedOutBy.First,
+                        Last = t.CheckedOutBy.Last,
+                        Email = t.CheckedOutBy.Email ?? ""
+                    },
+                    CheckedInBy = t.CheckedInBy == null ? null : new TransactionUserResponse
+                    {
+                        Id = t.CheckedInBy.Id,
+                        First = t.CheckedInBy.First,
+                        Last = t.CheckedInBy.Last,
+                        Email = t.CheckedInBy.Email ?? ""
+                    },
+                    IsCheckedIn = t.CheckedInById != null,
+                    IsOverdue = t.DueTime < DateTime.Now
+                }).OrderBy(
                 t => t.IsCheckedIn
             ).ThenBy(
                 t => t.IsOverdue
@@ -96,7 +97,8 @@ namespace code_assessment_api.Services
                 .Select(t => new UserTransactionResponse
                 {
                     Id = t.Id,
-                    User = new TransactionUserResponse {
+                    User = new TransactionUserResponse
+                    {
                         Id = t.User.Id,
                         First = t.User.First,
                         Last = t.User.Last,

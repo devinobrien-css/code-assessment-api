@@ -42,6 +42,8 @@ namespace code_assessment_api.Services
         public async Task<IEnumerable<UserTransactionResponse>> GetAllUserTransactionsAsync()
         {
             var transactions = await _context.BookTransactions
+                .Include(t => t.User)
+                .ThenInclude(u => u.ProfileAvatar)
                 .Include(t => t.Book)
                 .Include(t => t.CheckedOutBy)
                 .Include(t => t.CheckedInBy)
@@ -53,8 +55,8 @@ namespace code_assessment_api.Services
                         Id = t.User.Id,
                         First = t.User.First,
                         Last = t.User.Last,
-                        Email = t.User.Email ?? ""
-
+                        Email = t.User.Email ?? "",
+                        ProfileAvatar = t.User.ProfileAvatar
                     },
                     Book = t.Book,
                     CheckOutTime = t.CheckOutTime,
@@ -65,14 +67,16 @@ namespace code_assessment_api.Services
                         Id = t.CheckedOutBy.Id,
                         First = t.CheckedOutBy.First,
                         Last = t.CheckedOutBy.Last,
-                        Email = t.CheckedOutBy.Email ?? ""
+                        Email = t.CheckedOutBy.Email ?? "",
+                        ProfileAvatar = t.User.ProfileAvatar
                     },
                     CheckedInBy = t.CheckedInBy == null ? null : new TransactionUserResponse
                     {
                         Id = t.CheckedInBy.Id,
                         First = t.CheckedInBy.First,
                         Last = t.CheckedInBy.Last,
-                        Email = t.CheckedInBy.Email ?? ""
+                        Email = t.CheckedInBy.Email ?? "",
+                        ProfileAvatar = t.User.ProfileAvatar
                     },
                     IsCheckedIn = t.CheckedInById != null,
                     IsOverdue = t.DueTime < DateTime.Now

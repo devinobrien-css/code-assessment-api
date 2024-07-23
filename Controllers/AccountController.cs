@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
+using Bogus;
 
 namespace code_assessment_api.Controllers;
 
@@ -29,6 +30,7 @@ public class AccountController(ApplicationDbContext context, UserManager<User> u
             Email = model.Email,
             First = model.First,
             Last = model.Last,
+            ProfileAvatarId = Randomizer.Seed.Next(1, 35)
         };
         var result = await _identityManager.CreateAsync(user, model.Password);
 

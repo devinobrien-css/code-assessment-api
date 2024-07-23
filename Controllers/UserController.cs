@@ -4,7 +4,6 @@ using code_assessment_api.Services;
 using Microsoft.AspNetCore.Authorization;
 using code_assessment_api.Data;
 using Microsoft.AspNetCore.Identity;
-using NuGet.Protocol;
 using code_assessment_api.ViewModels.Requests;
 using code_assessment_api.ViewModels.Responses;
 
@@ -16,12 +15,12 @@ namespace code_assessment_api.Controllers
     public class UserController(ApplicationDbContext context, UserManager<User> userManager) : ControllerBase
     {
         private readonly UserManager<User> _identityManager = userManager;
-        private readonly UserService _userService = new(context);
+        private readonly UserService _userService = new(context, userManager);
         private readonly BookService _bookService = new(context);
 
         // GET: api/User
         [HttpGet]
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<GetUserResponse>> GetUsers()
         {
             return await _userService.GetUsersAsync();
         }

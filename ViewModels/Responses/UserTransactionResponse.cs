@@ -9,6 +9,7 @@ public class TransactionUserResponse
     public string First { get; set; } = string.Empty;
     public string Last { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
+    public ProfileAvatar? ProfileAvatar { get; set; } = null!;
 }
 
 public class UserTransactionResponse

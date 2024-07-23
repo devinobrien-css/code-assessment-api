@@ -6,7 +6,7 @@ namespace code_assessment_api.Services
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetUsersAsync();
+        Task<IEnumerable<GetUserResponse>> GetUsersAsync();
         Task<User?> GetUserAsync(string id);
         Task UpdateUserAsync(string userId, UpdateUserRequest newData);
         Task AddUserAsync(User user);

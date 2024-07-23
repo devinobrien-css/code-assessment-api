@@ -1,22 +1,58 @@
 using Microsoft.EntityFrameworkCore;
 using code_assessment_api.Data;
 using code_assessment_api.Models;
-using code_assessment_api.Services;
 using code_assessment_api.ViewModels.Responses;
 using code_assessment_api.ViewModels.Requests;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 
 namespace code_assessment_api.Services
 {
-    public class UserService(ApplicationDbContext context) : IUserService
+    public class UserService(ApplicationDbContext context, UserManager<User> userManager) : IUserService
     {
         private readonly ApplicationDbContext _context = context;
+        private readonly UserManager<User> _identityManager = userManager;
 
-        public async Task<IEnumerable<User>> GetUsersAsync()
+        public async Task<IEnumerable<GetUserResponse>> GetUsersAsync()
         {
-            return await _context.Users.ToListAsync();
+            var users = await _context.Users.Include(
+                u => u.ProfileAvatar
+            )
+            .Select(
+                u => new User
+                {
+                    Id = u.Id,
+                    First = u.First,
+                    Last = u.Last,
+                    Email = u.Email,
+                    ProfileAvatar = u.ProfileAvatar ?? new ProfileAvatar {
+                        Id = 0,
+                        Url = "https://robohash.org/55"
+                    },
+                }
+            ).ToListAsync();
+
+            var identityUsers = new List<GetUserResponse>();
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                var identityUser = await _identityManager.FindByIdAsync(users[i].Id);
+
+                if (identityUser != null)
+                {
+                    var roles = await _identityManager.GetRolesAsync(identityUser);
+                    identityUsers.Add(new GetUserResponse
+                    {
+                        Id = users[i].Id,
+                        First = users[i].First,
+                        Last = users[i].Last,
+                        Email = users[i].Email ?? "",
+                        ProfileAvatar = users[i].ProfileAvatar == null ? "https://robohash.org/55" : users[i].ProfileAvatar?.Url,
+                        Roles = roles
+                    });
+                }
+            }
+
+            return identityUsers;
         }
 
         public async Task<User?> GetUserAsync(string id)

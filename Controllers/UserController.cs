@@ -27,7 +27,7 @@ namespace code_assessment_api.Controllers
 
         // GET: api/User/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(string id)
+        public async Task<ActionResult<GetUserResponse>> GetUser(string id)
         {
             if (id == null)
             {
@@ -172,7 +172,12 @@ namespace code_assessment_api.Controllers
                 return NotFound();
             }
 
-            await _userService.DeleteUserAsync(user);
+            await _userService.DeleteUserAsync(new User {
+                Id = user.Id,
+                First = user.First,
+                Last = user.Last,
+                Email = user.Email,
+            });
 
             return NoContent();
         }

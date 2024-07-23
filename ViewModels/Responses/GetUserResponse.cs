@@ -1,4 +1,3 @@
-using code_assessment_api.Models;
 
 namespace code_assessment_api.ViewModels.Responses;
 public class GetUserResponse
@@ -9,5 +8,6 @@ public class GetUserResponse
     public string Email { get; set; } = string.Empty;
     public string? ProfileAvatar { get; set; } = null!;
     public IEnumerable<string>? Roles { get; set; } = null!;
+    public IEnumerable<UserTransactionResponse>? Transactions { get; set; } = null!;
 }
 

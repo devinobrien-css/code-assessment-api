@@ -55,9 +55,48 @@ namespace code_assessment_api.Services
             return identityUsers;
         }
 
-        public async Task<User?> GetUserAsync(string id)
+        public async Task<GetUserResponse?> GetUserAsync(string id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users.Include(
+                u => u.ProfileAvatar
+            ).Include(
+                u => u.Transactions
+            ).ThenInclude(
+                t => t.Book
+            ).Select(
+                u => new GetUserResponse
+                {
+                    Id = u.Id,
+                    First = u.First,
+                    Last = u.Last,
+                    Email = u.Email ?? "",
+                    ProfileAvatar = (u.ProfileAvatar != null) ? u.ProfileAvatar.Url : "https://robohash.org/55",
+                    Transactions = u.Transactions.Select(
+                        t => new UserTransactionResponse
+                        {
+                            Id = t.Id,
+                            Book = t.Book,
+                            CheckOutTime = t.CheckOutTime,
+                            DueTime = t.DueTime,
+                            CheckedOutBy = new TransactionUserResponse
+                            {
+                                Id = t.CheckedOutById ?? "",
+                                First = t.CheckedOutBy!.First ?? "",
+                                Last = t.CheckedOutBy!.Last ?? ""
+                            },
+                            CheckedInBy = new TransactionUserResponse
+                            {
+                                Id = t.CheckedInById ?? "",
+                                First = t.CheckedInBy!.First ?? "",
+                                Last = t.CheckedInBy!.Last ?? ""
+                            },
+                            IsCheckedIn = t.CheckedInById != null,
+                            IsOverdue = t.DueTime < DateTime.Now && t.CheckedInById == null
+                        }
+                    ),
+                }
+            )
+            .SingleOrDefaultAsync(u => u.Id == id);
 
             if (user == null)
             {

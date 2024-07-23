@@ -78,15 +78,15 @@ namespace code_assessment_api.Services
                             Book = t.Book,
                             CheckOutTime = t.CheckOutTime,
                             DueTime = t.DueTime,
-                            CheckedOutBy = new TransactionUserResponse
+                            CheckedOutBy = t.CheckedOutBy == null ? null :  new TransactionUserResponse
                             {
-                                Id = t.CheckedOutById ?? "",
-                                First = t.CheckedOutBy!.First ?? "",
-                                Last = t.CheckedOutBy!.Last ?? ""
+                                Id = t.CheckedOutBy.Id,
+                                First = t.CheckedOutBy!.First,
+                                Last = t.CheckedOutBy!.Last
                             },
-                            CheckedInBy = new TransactionUserResponse
+                            CheckedInBy = t.CheckedInBy == null ? null : new TransactionUserResponse
                             {
-                                Id = t.CheckedInById ?? "",
+                                Id = t.CheckedInBy.Id,
                                 First = t.CheckedInBy!.First ?? "",
                                 Last = t.CheckedInBy!.Last ?? ""
                             },

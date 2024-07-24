@@ -1,4 +1,4 @@
-using code_assessment_api.Data;
+using App.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCore.Identity.Extensions;

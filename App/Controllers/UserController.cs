@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using code_assessment_api.Models;
-using code_assessment_api.Services;
+using App.Models;
+using App.Services;
 using Microsoft.AspNetCore.Authorization;
-using code_assessment_api.Data;
+using App.Data;
 using Microsoft.AspNetCore.Identity;
-using code_assessment_api.ViewModels.Requests;
-using code_assessment_api.ViewModels.Responses;
+using App.ViewModels.Requests;
+using App.ViewModels.Responses;
 
-namespace code_assessment_api.Controllers
+namespace App.Controllers
 {
     [ApiController]
     [Authorize]
@@ -172,7 +172,8 @@ namespace code_assessment_api.Controllers
                 return NotFound();
             }
 
-            await _userService.DeleteUserAsync(new User {
+            await _userService.DeleteUserAsync(new User
+            {
                 Id = user.Id,
                 First = user.First,
                 Last = user.Last,

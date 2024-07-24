@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using code_assessment_api.Models;
-using code_assessment_api.Data;
+using App.Models;
+using App.Data;
 
-namespace code_assessment_api.Controllers
+namespace App.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

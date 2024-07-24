@@ -1,2 +1,6 @@
+bin
+obj
 App/bin
 App/obj
+App.Tests/bin
+App.Tests/obj

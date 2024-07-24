@@ -1,14 +1,14 @@
 using Microsoft.EntityFrameworkCore;
-using code_assessment_api.Data;
-using code_assessment_api.Models;
-using code_assessment_api.Services;
-using code_assessment_api.ViewModels.Responses;
-using code_assessment_api.ViewModels.Requests;
+using App.Data;
+using App.Models;
+using App.Services;
+using App.ViewModels.Responses;
+using App.ViewModels.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace code_assessment_api.Services
+namespace App.Services
 {
     public class TransactionService(ApplicationDbContext context, UserManager<User> userManager) : ITransactionService
     {

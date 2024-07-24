@@ -1,4 +1,4 @@
-namespace code_assessment_api.ViewModels.Responses;
+namespace App.ViewModels.Responses;
 
 public class UserReviewResponse
 {

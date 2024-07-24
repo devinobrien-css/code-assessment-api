@@ -1,7 +1,7 @@
-using code_assessment_api.ViewModels.Requests;
-using code_assessment_api.ViewModels.Responses;
+using App.ViewModels.Requests;
+using App.ViewModels.Responses;
 
-namespace code_assessment_api.Services
+namespace App.Services
 {
     public interface ITransactionService
     {

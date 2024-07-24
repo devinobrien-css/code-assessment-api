@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using code_assessment_api.Data;
-using code_assessment_api.Models;
-using code_assessment_api.ViewModels.Responses;
-using code_assessment_api.ViewModels.Requests;
+using App.Data;
+using App.Models;
+using App.ViewModels.Responses;
+using App.ViewModels.Requests;
 using Microsoft.AspNetCore.Identity;
 
-namespace code_assessment_api.Services
+namespace App.Services
 {
     public class UserService(ApplicationDbContext context, UserManager<User> userManager) : IUserService
     {
@@ -24,7 +24,8 @@ namespace code_assessment_api.Services
                     First = u.First,
                     Last = u.Last,
                     Email = u.Email,
-                    ProfileAvatar = u.ProfileAvatar ?? new ProfileAvatar {
+                    ProfileAvatar = u.ProfileAvatar ?? new ProfileAvatar
+                    {
                         Id = 0,
                         Url = "https://robohash.org/55"
                     },
@@ -78,7 +79,7 @@ namespace code_assessment_api.Services
                             Book = t.Book,
                             CheckOutTime = t.CheckOutTime,
                             DueTime = t.DueTime,
-                            CheckedOutBy = t.CheckedOutBy == null ? null :  new TransactionUserResponse
+                            CheckedOutBy = t.CheckedOutBy == null ? null : new TransactionUserResponse
                             {
                                 Id = t.CheckedOutBy.Id,
                                 First = t.CheckedOutBy!.First,

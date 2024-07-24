@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using code_assessment_api.Data;
-using code_assessment_api.Models;
-using code_assessment_api.ViewModels.Responses;
-using code_assessment_api.ViewModels.Requests;
+using App.Data;
+using App.Models;
+using App.ViewModels.Responses;
+using App.ViewModels.Requests;
 
-namespace code_assessment_api.Services
+namespace App.Services
 {
     public class BookService(ApplicationDbContext context) : IBookService
     {
@@ -57,7 +57,7 @@ namespace code_assessment_api.Services
                             Rating = r.Rating,
                             Description = r.Description,
                             DateReviewed = r.DateReviewed,
-                            Reviewer =  new UserReviewResponse
+                            Reviewer = new UserReviewResponse
                             {
                                 Id = r.User.Id,
                                 First = r.User.First,
@@ -147,7 +147,7 @@ namespace code_assessment_api.Services
                             Rating = r.Rating,
                             Description = r.Description,
                             DateReviewed = r.DateReviewed,
-                            Reviewer =  new UserReviewResponse
+                            Reviewer = new UserReviewResponse
                             {
                                 Id = r.User.Id,
                                 First = r.User.First,

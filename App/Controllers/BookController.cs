@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using code_assessment_api.Models;
+using App.Models;
 using Microsoft.AspNetCore.Authorization;
-using code_assessment_api.Data;
+using App.Data;
 using NuGet.Protocol;
-using code_assessment_api.Services;
-using code_assessment_api.ViewModels.Responses;
-using code_assessment_api.ViewModels.Requests;
+using App.Services;
+using App.ViewModels.Responses;
+using App.ViewModels.Requests;
 
 
-namespace code_assessment_api.Controllers
+namespace App.Controllers
 {
     [Authorize]
     [ApiController]

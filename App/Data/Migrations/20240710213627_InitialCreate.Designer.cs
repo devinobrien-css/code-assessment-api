@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using code_assessment_api.Data;
+using App.Data;
 
 #nullable disable
 
-namespace code_assessment_api.Migrations
+namespace App.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240710213627_InitialCreate")]

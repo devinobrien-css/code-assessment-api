@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using code_assessment_api.Models;
-using code_assessment_api.Data;
-using code_assessment_api.Services;
+using App.Models;
+using App.Data;
+using App.Services;
 using Microsoft.AspNetCore.Identity;
-using code_assessment_api.ViewModels.Requests;
+using App.ViewModels.Requests;
 using Microsoft.AspNetCore.Authorization;
 
-namespace code_assessment_api.Controllers
+namespace App.Controllers
 {
     [ApiController]
     [Authorize(Roles = "Employee")]

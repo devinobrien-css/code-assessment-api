@@ -1,4 +1,4 @@
-namespace code_assessment_api.ViewModels.Requests;
+namespace App.ViewModels.Requests;
 
 public class UpdateUserRequest
 {

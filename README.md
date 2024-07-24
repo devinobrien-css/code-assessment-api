@@ -153,7 +153,7 @@ dotnet ef database update
 ### Code formatting:
 
 ```bash
-dotnet format code-assessment-api.sln
+dotnet format
 ```
 
 ## Documentation

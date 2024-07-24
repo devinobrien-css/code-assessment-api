@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using code_assessment_api.Models;
-using code_assessment_api.Data;
+using App.Models;
+using App.Data;
 using AspNetCore.Identity.Extensions;
 using Microsoft.OpenApi.Models;
 

@@ -1,9 +1,9 @@
-using code_assessment_api.Models;
-using code_assessment_api.Services;
-using code_assessment_api.ViewModels.Requests;
-using code_assessment_api.ViewModels.Responses;
+using App.Models;
+using App.Services;
+using App.ViewModels.Requests;
+using App.ViewModels.Responses;
 
-namespace code_assessment_api.Services
+namespace App.Services
 {
     public interface IBookService
     {

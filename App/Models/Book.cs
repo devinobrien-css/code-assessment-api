@@ -1,4 +1,4 @@
-namespace code_assessment_api.Models;
+namespace App.Models;
 
 public class Book
 {

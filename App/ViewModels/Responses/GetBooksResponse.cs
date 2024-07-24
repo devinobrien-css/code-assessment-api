@@ -1,7 +1,7 @@
 using System.Transactions;
-using code_assessment_api.Models;
+using App.Models;
 
-namespace code_assessment_api.ViewModels.Responses;
+namespace App.ViewModels.Responses;
 
 
 public class GetBookGenreResponse

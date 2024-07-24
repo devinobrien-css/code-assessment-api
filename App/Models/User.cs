@@ -1,7 +1,7 @@
-using code_assessment_api.Services;
+using App.Services;
 using Microsoft.AspNetCore.Identity;
 
-namespace code_assessment_api.Models;
+namespace App.Models;
 
 public class User : IdentityUser
 {

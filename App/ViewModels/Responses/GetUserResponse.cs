@@ -1,5 +1,5 @@
 
-namespace code_assessment_api.ViewModels.Responses;
+namespace App.ViewModels.Responses;
 public class GetUserResponse
 {
     public string Id { get; set; } = string.Empty;

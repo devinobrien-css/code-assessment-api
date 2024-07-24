@@ -56,12 +56,6 @@ bash build.sh
 cd ..
 ```
 
-### Open Project
-
-```bash
-cd App
-```
-
 ### Restore installs
 
 ```bash
@@ -71,7 +65,7 @@ dotnet restore
 ### Generate & Trust a Development Cert
 
 ```bash
-dotnet dev-certs https --trust
+dotnet run --launch-profile https --project App
 ```
 
 ### Start the application
@@ -141,8 +135,10 @@ Ensure .NET Entity Framework is installed
 dotnet tool install --global dotnet-ef
 ```
 
+> All should be run from the `/App` directory
+
 Create a migration:
-```bash
+cd App
 dotnet ef migrations add NewMigrationTitle -o Data/Migrations
 ```
 
@@ -153,6 +149,7 @@ dotnet ef migrations remove
 
 Update the database:
 ```bash
+cd App
 dotnet ef database update
 ```
 

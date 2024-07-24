@@ -7,11 +7,9 @@
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/engine/install/) installed on your machine
-- Basic knowledge of [Docker](https://docs.docker.com/get-started/overview/)
-- Basic knowledge of [SQLServer](https://learn.microsoft.com/en-us/sql/sql-server/?view=sql-server-ver16)
-- [Docker](https://docs.docker.com/engine/install/) installed on your machine
 - [.NET Core 8+](https://dotnet.microsoft.com/download) installed on your machine
 - [Git](https://git-scm.com/download/) installed on your machine
+- [Visual Studio Code](https://code.visualstudio.com/) installed on your machine
 
 &nbsp;
 
@@ -78,8 +76,6 @@ Once the instance is live, start the app:
 dotnet run --launch-profile https
 ```
 
-&nbsp;
-
 ### View the OpenAPI Specs
 
 [The OpenAPI specs can now be found here](https://localhost:7120/swagger)
@@ -90,9 +86,9 @@ dotnet run --launch-profile https
 
 ### Logical Breakdown of Concepts
 
-Model (type defining)
-Controller (routing(req/res) & auth)
-Service (Handling)
+- Model (type defining)
+- Controller (routing(req/res) & auth)
+- Service (Handling)
 
 ### Adding a Package
 
@@ -114,8 +110,6 @@ public class Model
 }
 ```
 
-&nbsp;
-
 ### Controller Development
 
 To generate a controller template, run the following:
@@ -126,13 +120,13 @@ dotnet aspnet-codegenerator controller -name [MODEL_NAME]Controller -async -api 
 
 Adjust the controller as required for the instance.
 
-&nbsp;
-
 ### Authenticating Endpoints
 
-&nbsp;
+Add `[Authorization]` above the route.
 
-Add `[Authorization]` above the route
+> By default this will require the requested user to be logged in
+
+Can also manage roles: `[Authorization(roles = "Employee")]`
 
 ### Migration Scripts
 
@@ -156,8 +150,6 @@ Update the database:
 dotnet ef database update
 ```
 
-&nbsp;
-
 ### Code formatting:
 
 ```bash
@@ -172,5 +164,4 @@ dotnet format code-assessment-api.sln
 [.NET Migrations](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli)
 [.NET Identity](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0)
 [Prevent Over Posting](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0)
-
-dotnet ef migrations add NullableProfilePicture -o Data/Migrations
+[Creating a Pipeline](https://learn.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=net%2Cbrowser)

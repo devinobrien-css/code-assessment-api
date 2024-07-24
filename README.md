@@ -54,6 +54,11 @@ Run the following docker script to launch a container hosting SQL Server:
 cd docker
 bash build.sh
 cd ..
+```
+
+### Open Project
+
+```bash
 cd App
 ```
 

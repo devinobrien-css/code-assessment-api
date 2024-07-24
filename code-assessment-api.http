@@ -1,6 +1,0 @@
-@code_assessment_api_HostAddress = http://localhost:5098
-
-GET {{code_assessment_api_HostAddress}}/User/
-Accept: application/json
-
-###

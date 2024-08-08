@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace App.Controllers
 {
     [ApiController]
-    [Authorize(Roles = "Employee")]
+    [Authorize]
     [Route("api/[controller]")]
     public class TransactionController(ApplicationDbContext context, UserManager<User> userManager) : ControllerBase
     {
@@ -40,6 +40,7 @@ namespace App.Controllers
 
         // GET: api/transaction
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public async Task<IActionResult> GetAllUserTransactions()
         {
             var transactions = await _transactionService.GetAllUserTransactionsAsync();
@@ -61,6 +62,7 @@ namespace App.Controllers
 
         // PATCH: api/transaction/{id}
         [HttpPatch("{id}")]
+        [Authorize(Roles = "Employee")]
         public async Task<IActionResult> UpdateTransaction(int id, UpdateTransactionRequest transaction)
         {
             await _transactionService.ProcessReturnAsync(id, transaction.CheckedInById);

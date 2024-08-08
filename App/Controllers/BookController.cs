@@ -82,7 +82,6 @@ namespace App.Controllers
 
         // POST: api/Book/{id}/review
         [HttpPost("{id}/review")]
-        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> PostReview(int id, PostReviewRequest review)
         {
             var book = await _context.Books.FindAsync(id);

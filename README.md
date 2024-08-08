@@ -138,11 +138,13 @@ dotnet tool install --global dotnet-ef
 > All should be run from the `/App` directory
 
 Create a migration:
+```bash
 cd App
 dotnet ef migrations add NewMigrationTitle -o Data/Migrations
 ```
 
 Remove a migration:
+
 ```bash
 dotnet ef migrations remove
 ```
@@ -157,6 +159,12 @@ dotnet ef database update
 
 ```bash
 dotnet format
+```
+
+### Unit Testing:
+
+```bash
+dotnet test
 ```
 
 ## Documentation
